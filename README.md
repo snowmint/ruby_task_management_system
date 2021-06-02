@@ -74,4 +74,4 @@
 	Ref: L.index < M.label_id
 	Ref: T.index < M.task_id
 
-
+![table_schema](./img/Ruby_task_project.png)
