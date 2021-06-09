@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_05_151711) do
+ActiveRecord::Schema.define(version: 2021_06_03_190550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,14 +23,14 @@ ActiveRecord::Schema.define(version: 2021_06_05_151711) do
   end
 
   create_table "labels", force: :cascade do |t|
-    t.string "label_name"
+    t.string "label_name", limit: 30
     t.integer "num_of_use"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer "user_id"
+    t.string "user_id", limit: 30
     t.datetime "start_time"
     t.datetime "end_time"
     t.string "task_name"
@@ -42,12 +42,12 @@ ActiveRecord::Schema.define(version: 2021_06_05_151711) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
+    t.string "user_account", limit: 30
     t.string "password", limit: 256
     t.string "user_fullname"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["username"], name: "index_users_on_username", unique: true
+    t.index ["user_account"], name: "index_users_on_user_account", unique: true
   end
 
 end
