@@ -1,0 +1,10 @@
+<h1>Edit Task</h1>
+
+<div style="color:red">
+    <%= flash[:error]%>
+</div>
+
+<%= render "form", task: @task, locals: { url: edit_task_path } %>
+
+<br />
+<%= link_to 'Back to task list', root_path %>

@@ -1,0 +1,44 @@
+<!--h1>Hello World!</h1-->
+This is my first Rails Webpage...
+<!--p>Find me in app/views/list/index.html.erb</p-->
+
+<h1>Task List</h1>
+
+<div style="color:green">
+    <%= flash[:success]%>
+</div>
+
+<%= link_to "Add task", new_task_path %>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th> user_id </th>
+      <th> task_name </th>
+      <th> content </th>
+      <th> start_time </th>
+      <th> end_time </th>
+      <th> priority </th>
+      <th> status </th>
+      <td> handle </td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.user_id%></td>
+      <td><%= task.task_name %></td>
+      <td><%= task.content %></td>
+      <td><%= task.start_time %></td>
+      <td><%= task.end_time %></td>
+      <td><%= task.priority %></td>
+      <td><%= task.status %></td>
+      <td>
+        <%= link_to 'Edit', edit_task_path(task) %>
+        <%= link_to 'Delete', edit_task_path(task), method: "delete", data: { confirm: "Comfirm to delete it" } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
