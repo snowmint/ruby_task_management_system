@@ -1,0 +1,24 @@
+<%= form_for(task, locals) do |t| %>
+  <%= t.label :user_id, "user_id" %>
+  <%= t.number_field :user_id %> <br />
+
+  <%= t.label :task_name, "task_name" %>
+  <%= t.text_field :task_name %> <br />
+
+  <%= t.label :content, "content" %>
+  <%= t.text_area :content %> <br />
+
+  <%= t.label :start_time, "start_time" %>
+  <%= t.datetime_select :start_time %> <br />
+
+  <%= t.label :end_time, "end_time" %>
+  <%= t.datetime_select :end_time %> <br />
+ 
+  <%= t.label :priority, "priority" %>
+  <%= t.number_field :priority %> <br />
+
+  <%= t.label :status, "status" %>
+  <%= t.number_field :status %> <br />
+
+  <%= t.submit %>
+<% end %>
