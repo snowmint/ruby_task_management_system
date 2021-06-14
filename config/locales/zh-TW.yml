@@ -1,0 +1,22 @@
+"zh-TW":
+  hello_world: 哈囉世界
+  task_relate:
+    task_list: "任務列表"
+    add_task: "新增任務"
+    edit_task: "編輯"
+    delete_task: "刪除"
+  activerecord:
+    attributes:
+      tasks:
+        task_name: "任務名稱"
+        content: "任務內容"
+        priority: "優先度"
+        status: "進度"
+        start_time: "開始時間"
+        end_time: "結束時間"
+      labels:
+        label_name: "標籤名稱"
+        num_of_use: "使用次數"
+      users:
+        username: "使用者名稱"
+        password: "密碼"

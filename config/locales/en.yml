@@ -30,4 +30,24 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello_world: "Hello world"
+  task_relate:
+    task_list: "Task list"
+    add_task: "Add task"
+    edit_task: "Edit"
+    delete_task: "Delete"
+  activerecord:
+    attributes:
+      tasks:
+        task_name: "Task name"
+        content: "Task content"
+        priority: "Priority"
+        status: "Status"
+        start_time: "Start time"
+        end_time: "End time"
+      labels:
+        label_name: "Label name"
+        num_of_use: "Number of use"
+      users:
+        username: "Username"
+        password: "Password"

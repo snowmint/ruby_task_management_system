@@ -1,14 +1,11 @@
-<!--h1>Hello World!</h1-->
-This is my first Rails Webpage...
-<!--p>Find me in app/views/list/index.html.erb</p-->
-
-<h1>Task List</h1>
+<!--h1>Task List</h1-->
+<h1><%= raw(t('task_relate.task_list')) %></h1>
 
 <div style="color:green">
     <%= flash[:success]%>
 </div>
 
-<%= link_to "Add task", new_task_path %>
+<%= link_to raw(t('task_relate.add_task')), new_task_path %>
 
 <table class="table table-striped table-hover">
   <thead>
@@ -34,8 +31,8 @@ This is my first Rails Webpage...
       <td><%= task.priority %></td>
       <td><%= task.status %></td>
       <td>
-        <%= link_to 'Edit', edit_task_path(task) %>
-        <%= link_to 'Delete', edit_task_path(task), method: "delete", data: { confirm: "Comfirm to delete it" } %>
+        <%= link_to raw(t('task_relate.edit_task')), edit_task_path(task) %>
+        <%= link_to raw(t('task_relate.delete_task')), edit_task_path(task), method: "delete", data: { confirm: "Comfirm to delete it" } %>
       </td>
     </tr>
     <% end %>
