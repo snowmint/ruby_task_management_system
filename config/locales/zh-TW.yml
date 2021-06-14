@@ -8,12 +8,14 @@
   activerecord:
     attributes:
       tasks:
+        user_id: "使用者ID"
         task_name: "任務名稱"
         content: "任務內容"
         priority: "優先度"
         status: "進度"
         start_time: "開始時間"
         end_time: "結束時間"
+        handle: "操作"
       labels:
         label_name: "標籤名稱"
         num_of_use: "使用次數"

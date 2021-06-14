@@ -39,12 +39,14 @@ en:
   activerecord:
     attributes:
       tasks:
+        user_id: "User ID"
         task_name: "Task name"
         content: "Task content"
         priority: "Priority"
         status: "Status"
         start_time: "Start time"
         end_time: "End time"
+        handle: "Handle"
       labels:
         label_name: "Label name"
         num_of_use: "Number of use"
