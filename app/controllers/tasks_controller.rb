@@ -1,6 +1,36 @@
 class TasksController < ApplicationController
     def index
-      @tasks = Task.all
+      @tasks = case params[:order]
+        when 'by_sort_create_time_desc'
+          Task.order('created_at DESC')
+        when 'by_sort_create_time_asc'
+          Task.order('created_at ASC')
+
+        when 'by_sort_priority_desc'
+          Task.order('priority DESC')
+        when 'by_sort_priority_asc'
+          Task.order('priority ASC')
+
+        when 'by_sort_status_desc'
+          Task.order('status DESC')
+        when 'by_sort_status_asc'
+          Task.order('status ASC')
+
+        when 'by_sort_start_time_desc'
+          Task.order('start_time DESC')
+        when 'by_sort_start_time_asc'
+          Task.order('start_time ASC')
+
+        when 'by_sort_end_time_desc'
+          Task.order('end_time DESC')
+        when 'by_sort_end_time_asc'
+          Task.order('end_time ASC')
+        
+        when 'by_sort_id_desc'
+          Task.order('id DESC')
+        else
+          Task.order('id ASC')
+      end
     end
   
     def new

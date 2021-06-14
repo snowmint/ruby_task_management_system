@@ -1,5 +1,21 @@
 "zh-TW":
   hello_world: 哈囉世界
+  sort:
+    sort_title: "排序方法"
+    sort_id_desc: "ID (降序)"
+    sort_id_asc: "ID (升序)"
+    sort_priority_desc: "優先度 (降序)"
+    sort_priority_asc: "優先度 (升序)"
+    sort_status_desc: "進度 (降序)"
+    sort_status_asc: "進度 (升序)"
+    sort_create_time_desc: "建立時間 (降序)"
+    sort_create_time_asc: "建立時間 (升序)"
+    sort_update_time_desc: "更新時間 (降序)"
+    sort_update_time_asc: "更新時間 (升序)"
+    sort_start_time_desc: "開始時間 (降序)"
+    sort_start_time_asc: "開始時間 (升序)"
+    sort_end_time_desc: "結束時間 (降序)"
+    sort_end_time_asc: "結束時間 (升序)"
   task_relate:
     task_list: "任務列表"
     add_task: "新增任務"
@@ -15,6 +31,8 @@
         status: "進度"
         start_time: "開始時間"
         end_time: "結束時間"
+        create_time: "建立時間"
+        update_time: "更新時間"
         handle: "操作"
       labels:
         label_name: "標籤名稱"
