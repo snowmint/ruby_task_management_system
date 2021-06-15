@@ -31,6 +31,22 @@
 
 en:
   hello_world: "Hello world"
+  sort:
+    sort_title: "Sort by "
+    sort_id_desc: "ID (desc)"
+    sort_id_asc: "ID (asc)"
+    sort_priority_desc: "Priority (desc)"
+    sort_priority_asc: "Priority (asc)"
+    sort_status_desc: "Status (desc)"
+    sort_status_asc: "Status (asc)"
+    sort_create_time_desc: "Create time (desc)"
+    sort_create_time_asc: "Create time (asc)"
+    sort_update_time_desc: "Update time (desc)"
+    sort_update_time_asc: "Update time (asc)"
+    sort_start_time_desc: "Start time (desc)"
+    sort_start_time_asc: "Start time (asc)"
+    sort_end_time_desc: "End time (desc)"
+    sort_end_time_asc: "End time (asc)"
   task_relate:
     task_list: "Task list"
     add_task: "Add task"
@@ -46,6 +62,8 @@ en:
         status: "Status"
         start_time: "Start time"
         end_time: "End time"
+        create_time: "Create time"
+        update_time: "Update time"
         handle: "Handle"
       labels:
         label_name: "Label name"

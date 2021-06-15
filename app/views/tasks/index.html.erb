@@ -7,6 +7,54 @@
 
 <%= link_to raw(t('task_relate.add_task')), new_task_path %>
 
+<div class="dropdown clearfix pull-right">
+<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+<%= raw(t('sort.sort_title')) %>
+    <span class="caret"></span>
+</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+    <li>
+      <%= link_to( raw(t('sort.sort_create_time_desc')), root_path(:order => "by_sort_create_time_desc")) %>
+    </li>
+    <li>
+      <%= link_to( raw(t('sort.sort_create_time_asc')), root_path(:order => "by_sort_create_time_asc")) %>
+    </li>
+    <li>
+      <%= link_to( raw(t('sort.sort_priority_desc')), root_path(:order => "by_sort_priority_desc")) %>
+    </li>
+    <li>
+      <%= link_to( raw(t('sort.sort_priority_asc')), root_path(:order => "by_sort_priority_asc")) %>
+    </li>
+    <li>
+      <%= link_to( raw(t('sort.sort_status_desc')), root_path(:order => "by_sort_status_desc")) %>
+    </li>
+    <li>
+      <%= link_to( raw(t('sort.sort_status_desc')), root_path(:order => "by_sort_status_asc")) %>
+    </li>
+    
+    <li>
+      <%= link_to( raw(t('sort.sort_start_time_desc')), root_path(:order => "by_sort_start_time_desc")) %>
+    </li>
+    <li>
+      <%= link_to( raw(t('sort.sort_start_time_asc')), root_path(:order => "by_sort_start_time_asc")) %>
+    </li>
+
+    <li>
+      <%= link_to( raw(t('sort.sort_end_time_desc')), root_path(:order => "by_sort_end_time_desc")) %>
+    </li>
+    <li>
+      <%= link_to( raw(t('sort.sort_end_time_asc')), root_path(:order => "by_sort_end_time_asc")) %>
+    </li>
+
+    <li>
+      <%= link_to(raw(t('sort.sort_id_desc')), root_path(:order => "by_sort_id_desc") ) %>
+    </li>
+    <li>
+      <%= link_to(raw(t('sort.sort_id_asc')), root_path(:order => "by_sort_id_asc") ) %>
+    </li>
+  </ul>
+</div>
+
 <table class="table table-striped table-hover">
   <thead>
     <tr>
@@ -17,6 +65,7 @@
       <th> <%= raw(t('activerecord.attributes.tasks.end_time')) %> </th>
       <th> <%= raw(t('activerecord.attributes.tasks.priority')) %> </th>
       <th> <%= raw(t('activerecord.attributes.tasks.status')) %> </th>
+      <th> <%= raw(t('activerecord.attributes.tasks.create_time')) %> </th>
       <td> <%= raw(t('activerecord.attributes.tasks.handle')) %> </td>
     </tr>
   </thead>
@@ -30,6 +79,7 @@
       <td><%= task.end_time %></td>
       <td><%= task.priority %></td>
       <td><%= task.status %></td>
+      <td><%= task.created_at %></td>
       <td>
         <%= link_to raw(t('task_relate.edit_task')), edit_task_path(task) %>
         <%= link_to raw(t('task_relate.delete_task')), edit_task_path(task), method: "delete", data: { confirm: "Comfirm to delete it" } %>
