@@ -5,7 +5,7 @@ before_install:
 - gem install bundler
 install:
 - gem install rails
-- gem 'rspec-rails', '~> 4.0.2'
+- gem install rspec
 script:
 - bundle install --jobs=3 --retry=3
 - RAILS_ENV=test bundle exec rails db:reset db:setup db:migrate --trace
