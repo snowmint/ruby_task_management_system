@@ -1,14 +1,13 @@
 language: ruby
 rvm:
-- 3.0.1
-before_install:
-- gem install bundler
+  - 3.0.1
 install:
-- gem install rails
-- gem install rspec
+  - bundle install
+  - nvm install 10
+  - npm i -g yarn
+  - yarn
+services:
+  - postgresql
 script:
-- bundle install --jobs=3 --retry=3
-- RAILS_ENV=test
-- bundle exec rails db:create --trace
-- bundle exec rails db:migrate --trace
-- bundle exec rspec
+  - bundle exec rake db:migrate:reset RAILS_ENV=test
+  - bundle exec rspec
