@@ -1,4 +1,4 @@
-<h1>Edit Task</h1>
+<h1><%= raw(t('task_relate.edit_task')) %></h1>
 
 <div style="color:red">
     <%= flash[:error]%>
@@ -6,4 +6,4 @@
 <%= render "form", task: @task, locals: { url: edit_task_path } %>
 
 <br />
-<%= link_to 'Back to task list', root_path %>
+<%= link_to raw(t('task_relate.back_to_task_list')), root_path %>

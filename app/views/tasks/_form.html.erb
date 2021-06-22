@@ -1,23 +1,23 @@
 <%= form_for(task, locals) do |t| %>
-  <%= t.label :user_id, "user_id" %>
+  <%= t.label :user_id, raw(t('activerecord.attributes.tasks.user_id')) %>
   <%= t.number_field :user_id %> <br />
 
-  <%= t.label :task_name, "task_name" %>
+  <%= t.label :task_name, raw(t('activerecord.attributes.tasks.task_name')) %>
   <%= t.text_field :task_name %> <br />
 
-  <%= t.label :content, "content" %>
+  <%= t.label :content, raw(t('activerecord.attributes.tasks.content')) %>
   <%= t.text_area :content %> <br />
 
-  <%= t.label :start_time, "start_time" %>
+  <%= t.label :start_time, raw(t('activerecord.attributes.tasks.start_time')) %>
   <%= t.datetime_select :start_time %> <br />
 
-  <%= t.label :end_time, "end_time" %>
+  <%= t.label :end_time, raw(t('activerecord.attributes.tasks.end_time')) %>
   <%= t.datetime_select :end_time %> <br />
  
-  <%= t.label :priority, "priority" %>
+  <%= t.label :priority, raw(t('activerecord.attributes.tasks.priority')) %>
   <%= t.number_field :priority %> <br />
 
-  <%= t.label :status, "status" %>
+  <%= t.label :status, raw(t('activerecord.attributes.tasks.status')) %>
   <%= t.number_field :status %> <br />
 
   <%= t.submit %>
