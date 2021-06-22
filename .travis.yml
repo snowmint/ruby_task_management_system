@@ -7,6 +7,5 @@ install:
 - gem install rails
 script:
 - bundle install --jobs=3 --retry=3
-- bundle exec rake db:create
-- bundle exec rake db:migrate
+- bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
 - bundle exec rspec
