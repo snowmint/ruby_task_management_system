@@ -31,6 +31,18 @@
 
 en:
   hello_world: "Hello world"
+  errors:
+    task_name_without_content: "Must have content with task title."
+    content_without_task_name: "Must have task title with content."
+
+    username_blank: "Username can't be blank"
+    username_uniqueness: "Error: Duplicate Username"
+
+    password_blank: "Password can't be blank"
+    password_no_lowercase: "Password must contain at least one lowercase letter"
+    password_no_uppercase: "Password must contain at least one uppercase letter" 
+    password_no_digit: "Password must contain at least one digit"
+
   sort:
     sort_title: "Sort by "
     sort_id_desc: "ID (desc)"
@@ -52,6 +64,7 @@ en:
     add_task: "Add task"
     edit_task: "Edit"
     delete_task: "Delete"
+    back_to_task_list: "Back to task list"
   activerecord:
     attributes:
       tasks:
