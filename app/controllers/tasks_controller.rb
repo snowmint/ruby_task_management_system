@@ -31,6 +31,8 @@ class TasksController < ApplicationController
         else
           Task.order('id ASC')
       end
+
+      @tasks_filtered = Task.filtered(query_params)
     end
   
     def new
@@ -70,11 +72,24 @@ class TasksController < ApplicationController
         flash[:success] = "Data delete successfully!"
         redirect_to root_path
     end
+
+    def search  
+      if params[:search].blank?  
+        redirect_to(root_path, alert: "Empty field!") and return  
+      else  
+        @parameter = params[:search].downcase
+        @results = Task.all.where("lower(task_name) LIKE :search", search: "%#{@parameter}%") 
+      end  
+    end
   
     private
     def task_params
       params.require(:task).permit(:user_id, :task_name, :content, :start_time, :end_time, :priority, :status)
     end
-  
+
+    def query_params
+      query_params = params[:query]
+      query_params ? query_params.permit(:keyword, :status, :priority) : {}
+    end
   end
   
