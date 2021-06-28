@@ -1,114 +1,117 @@
 <!--h1>Task List</h1-->
-<h1><%= raw(t('task_relate.task_list')) %></h1>
+<div class="container-fluid">
+  <h1><%= raw(t('task_relate.task_list')) %></h1>
+  
+  <%= form_for :query, url: root_path, method: :get do |form| %>
+    <div class="field form-group" style="display:inline-block;">
+      <%= form.text_field :keyword, placeholder: raw(t('task_relate.enter_keyword')), value: params.dig('query', 'keyword'), class: "form-control" %>
+    </div>
 
-<%= form_for :query, url: search_task_path, method: :get do |form| %>
-  <div class="field form-group" style="display:inline-block;">
-    <%= form.text_field :keyword, placeholder: raw(t('task_relate.enter_keyword')), value: params.dig('query', 'keyword'), class: "form-control" %>
+    <div class="field form-group" style="display:inline-block;">
+      <%= form.label raw(t('activerecord.attributes.tasks.priority')), for: "task_priority" %>
+      <%= form.select :priority, [['Urgent', 0], ['Highest', 1], ['High', 2], ['Normal', 3], ['Low', 4], ['Lowest', 5]], include_blank: true, selected: params.dig('query', 'priority'), class: "form-select form-control", id: "task_priority"%>
+    </div>
+
+    <div class="field form-group" style="display:inline-block;">
+      <%= form.label raw(t('activerecord.attributes.tasks.status')), for: "task_status" %>
+      <%= form.select :status, [['Pending', 0], ['In progress', 1], ['Complete', 2]], include_blank: true, selected: params.dig('query', 'status'), class: "form-select form-control", id: "task_status" %>
+    </div>
+
+    <div class="actions form-group" style="display:inline-block;">
+      <%= form.submit raw(t('task_relate.serch_task')), class: "form-control" %>
+    </div>
+  <% end  %>
+
+  <div style="color:green">
+      <%= flash[:success]%>
   </div>
 
-  <div class="field form-group" style="display:inline-block;">
-    <%= form.label raw(t('activerecord.attributes.tasks.priority')), for: "task_priority" %>
-    <%= form.select :priority, [['Urgent', 0], ['Highest', 1], ['High', 2], ['Normal', 3], ['Low', 4], ['Lowest', 5]], include_blank: true, selected: params.dig('query', 'priority'), class: "form-select form-control", id: "task_priority"%>
-  </div>
+  <%= link_to raw(t('task_relate.add_task')), new_task_path %>
 
-  <div class="field form-group" style="display:inline-block;">
-    <%= form.label raw(t('activerecord.attributes.tasks.status')), for: "task_status" %>
-    <%= form.select :status, [['Pending', 0], ['In progress', 1], ['Complete', 2]], include_blank: true, selected: params.dig('query', 'status'), class: "form-select form-control", id: "task_status" %>
-  </div>
+  <div class="dropdown clearfix pull-right">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+  <%= raw(t('sort.sort_title')) %>
+      <span class="caret"></span>
+  </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+      <li>
+        <%= link_to( raw(t('sort.sort_create_time_desc')), root_path(:order => "by_sort_create_time_desc")) %>
+      </li>
+      <li>
+        <%= link_to( raw(t('sort.sort_create_time_asc')), root_path(:order => "by_sort_create_time_asc")) %>
+      </li>
+      <li>
+        <%= link_to( raw(t('sort.sort_priority_desc')), root_path(:order => "by_sort_priority_desc")) %>
+      </li>
+      <li>
+        <%= link_to( raw(t('sort.sort_priority_asc')), root_path(:order => "by_sort_priority_asc")) %>
+      </li>
+      <li>
+        <%= link_to( raw(t('sort.sort_status_desc')), root_path(:order => "by_sort_status_desc")) %>
+      </li>
+      <li>
+        <%= link_to( raw(t('sort.sort_status_desc')), root_path(:order => "by_sort_status_asc")) %>
+      </li>
+      
+      <li>
+        <%= link_to( raw(t('sort.sort_start_time_desc')), root_path(:order => "by_sort_start_time_desc")) %>
+      </li>
+      <li>
+        <%= link_to( raw(t('sort.sort_start_time_asc')), root_path(:order => "by_sort_start_time_asc")) %>
+      </li>
 
-  <div class="actions form-group" style="display:inline-block;">
-    <%= form.submit raw(t('task_relate.serch_task')), class: "form-control" %>
-  </div>
-<% end  %>
+      <li>
+        <%= link_to( raw(t('sort.sort_end_time_desc')), root_path(:order => "by_sort_end_time_desc")) %>
+      </li>
+      <li>
+        <%= link_to( raw(t('sort.sort_end_time_asc')), root_path(:order => "by_sort_end_time_asc")) %>
+      </li>
 
-<div style="color:green">
-    <%= flash[:success]%>
+      <li>
+        <%= link_to(raw(t('sort.sort_id_desc')), root_path(:order => "by_sort_id_desc") ) %>
+      </li>
+      <li>
+        <%= link_to(raw(t('sort.sort_id_asc')), root_path(:order => "by_sort_id_asc") ) %>
+      </li>
+    </ul>
+  </div>
+  <%
+    $status_list = ["Pending", "In Progress", "Complete"]
+    $priority_list = ["Urgent", "Highest", "High", "Normal", "Low", "Lowest"]
+  %>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th> <%= raw(t('activerecord.attributes.tasks.user_id')) %> </th>
+          <th> <%= raw(t('activerecord.attributes.tasks.task_name')) %> </th>
+          <th> <%= raw(t('activerecord.attributes.tasks.content')) %> </th>
+          <th> <%= raw(t('activerecord.attributes.tasks.start_time')) %> </th>
+          <th> <%= raw(t('activerecord.attributes.tasks.end_time')) %> </th>
+          <th> <%= raw(t('activerecord.attributes.tasks.priority')) %> </th>
+          <th> <%= raw(t('activerecord.attributes.tasks.status')) %> </th>
+          <th> <%= raw(t('activerecord.attributes.tasks.create_time')) %> </th>
+          <th> <%= raw(t('activerecord.attributes.tasks.handle')) %> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tasks.each do |task| %>
+        <tr>
+          <td><%= task.user_id%></td>
+          <td><%= task.task_name %></td>
+          <td><%= task.content %></td>
+          <td><%= task.start_time %></td>
+          <td><%= task.end_time %></td>
+          <td><%= $priority_list[task.priority] %></td>
+          <td><%= $status_list[task.status] %></td>
+          <td><%= task.created_at %></td>
+          <td>
+            <%= link_to raw(t('task_relate.edit_task')), edit_task_path(task) %>
+            <%= link_to raw(t('task_relate.delete_task')), edit_task_path(task), method: "delete", data: { confirm: "Comfirm to delete it" } %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<%= link_to raw(t('task_relate.add_task')), new_task_path %>
-
-<div class="dropdown clearfix pull-right">
-<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-<%= raw(t('sort.sort_title')) %>
-    <span class="caret"></span>
-</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
-    <li>
-      <%= link_to( raw(t('sort.sort_create_time_desc')), root_path(:order => "by_sort_create_time_desc")) %>
-    </li>
-    <li>
-      <%= link_to( raw(t('sort.sort_create_time_asc')), root_path(:order => "by_sort_create_time_asc")) %>
-    </li>
-    <li>
-      <%= link_to( raw(t('sort.sort_priority_desc')), root_path(:order => "by_sort_priority_desc")) %>
-    </li>
-    <li>
-      <%= link_to( raw(t('sort.sort_priority_asc')), root_path(:order => "by_sort_priority_asc")) %>
-    </li>
-    <li>
-      <%= link_to( raw(t('sort.sort_status_desc')), root_path(:order => "by_sort_status_desc")) %>
-    </li>
-    <li>
-      <%= link_to( raw(t('sort.sort_status_desc')), root_path(:order => "by_sort_status_asc")) %>
-    </li>
-    
-    <li>
-      <%= link_to( raw(t('sort.sort_start_time_desc')), root_path(:order => "by_sort_start_time_desc")) %>
-    </li>
-    <li>
-      <%= link_to( raw(t('sort.sort_start_time_asc')), root_path(:order => "by_sort_start_time_asc")) %>
-    </li>
-
-    <li>
-      <%= link_to( raw(t('sort.sort_end_time_desc')), root_path(:order => "by_sort_end_time_desc")) %>
-    </li>
-    <li>
-      <%= link_to( raw(t('sort.sort_end_time_asc')), root_path(:order => "by_sort_end_time_asc")) %>
-    </li>
-
-    <li>
-      <%= link_to(raw(t('sort.sort_id_desc')), root_path(:order => "by_sort_id_desc") ) %>
-    </li>
-    <li>
-      <%= link_to(raw(t('sort.sort_id_asc')), root_path(:order => "by_sort_id_asc") ) %>
-    </li>
-  </ul>
-</div>
-<%
-  $status_list = ["Pending", "In Progress", "Complete"]
-  $priority_list = ["Urgent", "Highest", "High", "Normal", "Low", "Lowest"]
-%>
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th> <%= raw(t('activerecord.attributes.tasks.user_id')) %> </th>
-      <th> <%= raw(t('activerecord.attributes.tasks.task_name')) %> </th>
-      <th> <%= raw(t('activerecord.attributes.tasks.content')) %> </th>
-      <th> <%= raw(t('activerecord.attributes.tasks.start_time')) %> </th>
-      <th> <%= raw(t('activerecord.attributes.tasks.end_time')) %> </th>
-      <th> <%= raw(t('activerecord.attributes.tasks.priority')) %> </th>
-      <th> <%= raw(t('activerecord.attributes.tasks.status')) %> </th>
-      <th> <%= raw(t('activerecord.attributes.tasks.create_time')) %> </th>
-      <td> <%= raw(t('activerecord.attributes.tasks.handle')) %> </td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tasks.each do |task| %>
-    <tr>
-      <td><%= task.user_id%></td>
-      <td><%= task.task_name %></td>
-      <td><%= task.content %></td>
-      <td><%= task.start_time %></td>
-      <td><%= task.end_time %></td>
-      <td><%= $priority_list[task.priority] %></td>
-      <td><%= $status_list[task.status] %></td>
-      <td><%= task.created_at %></td>
-      <td>
-        <%= link_to raw(t('task_relate.edit_task')), edit_task_path(task) %>
-        <%= link_to raw(t('task_relate.delete_task')), edit_task_path(task), method: "delete", data: { confirm: "Comfirm to delete it" } %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-

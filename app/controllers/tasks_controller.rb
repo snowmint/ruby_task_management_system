@@ -31,8 +31,7 @@ class TasksController < ApplicationController
         else
           Task.order('id ASC')
       end
-
-      @tasks_filtered = Task.filtered(query_params)
+      @tasks = Task.filtered(query_params)
     end
   
     def new
