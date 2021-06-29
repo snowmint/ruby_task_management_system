@@ -8,12 +8,12 @@
     </div>
 
     <div class="field form-group" style="display:inline-block;">
-      <%= form.label raw(t('activerecord.attributes.tasks.priority')), for: "task_priority" %>
+      <%= form.label Task.human_attribute_name("tasks.priority"), for: "task_priority" %>
       <%= form.select :priority, [['Urgent', 0], ['Highest', 1], ['High', 2], ['Normal', 3], ['Low', 4], ['Lowest', 5]], include_blank: true, selected: params.dig('query', 'priority'), class: "form-select form-control", id: "task_priority"%>
     </div>
 
     <div class="field form-group" style="display:inline-block;">
-      <%= form.label raw(t('activerecord.attributes.tasks.status')), for: "task_status" %>
+      <%= form.label Task.human_attribute_name("tasks.status"), for: "task_status" %>
       <%= form.select :status, [['Pending', 0], ['In progress', 1], ['Complete', 2]], include_blank: true, selected: params.dig('query', 'status'), class: "form-select form-control", id: "task_status" %>
     </div>
 
@@ -83,15 +83,15 @@
     <table class="table table-striped table-hover">
       <thead>
         <tr>
-          <th> <%= raw(t('activerecord.attributes.tasks.user_id')) %> </th>
-          <th> <%= raw(t('activerecord.attributes.tasks.task_name')) %> </th>
-          <th> <%= raw(t('activerecord.attributes.tasks.content')) %> </th>
-          <th> <%= raw(t('activerecord.attributes.tasks.start_time')) %> </th>
-          <th> <%= raw(t('activerecord.attributes.tasks.end_time')) %> </th>
-          <th> <%= raw(t('activerecord.attributes.tasks.priority')) %> </th>
-          <th> <%= raw(t('activerecord.attributes.tasks.status')) %> </th>
-          <th> <%= raw(t('activerecord.attributes.tasks.create_time')) %> </th>
-          <th> <%= raw(t('activerecord.attributes.tasks.handle')) %> </th>
+          <th> <%= Task.human_attribute_name("tasks.user_id") %> </th>
+          <th> <%= Task.human_attribute_name("tasks.task_name") %> </th>
+          <th> <%= Task.human_attribute_name("tasks.content") %> </th>
+          <th> <%= Task.human_attribute_name("tasks.start_time") %> </th>
+          <th> <%= Task.human_attribute_name("tasks.end_time") %> </th>
+          <th> <%= Task.human_attribute_name("tasks.priority") %> </th>
+          <th> <%= Task.human_attribute_name("tasks.tasks.status") %> </th>
+          <th> <%= Task.human_attribute_name("tasks.create_time") %> </th>
+          <th> <%= Task.human_attribute_name("tasks.handle") %> </th>
         </tr>
       </thead>
       <tbody>
