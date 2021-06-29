@@ -4,10 +4,10 @@ class Task < ApplicationRecord
   has_many :label_map
   #validates
   validates :user_id, :start_time, :end_time, :task_name, presence: true
-  validates :priority, presence: true, numericality: {#['0', 'Urgent'], ['1', 'Highest'], ['2', 'High'], ['3', 'Normal'], ['4', 'Low'], ['5', Lowest]
+  validates :priority, presence: true, numericality: {
     greater_than_or_equal_to: 0, less_than_or_equal_to: 5
   }
-  validates :status, presence: true, numericality: { #['0', 'Pending'], ['1', 'In progress'], ['2', 'Complete']
+  validates :status, presence: true, numericality: {
     greater_than_or_equal_to: 0, less_than_or_equal_to: 2
   }
   validate :validate_content_with_task_name

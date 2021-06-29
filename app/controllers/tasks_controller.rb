@@ -71,15 +71,6 @@ class TasksController < ApplicationController
         flash[:success] = "Data delete successfully!"
         redirect_to root_path
     end
-
-    def search  
-      if params[:search].blank?  
-        redirect_to(root_path, alert: "Empty field!") and return  
-      else  
-        @parameter = params[:search].downcase
-        @results = Task.all.where("lower(task_name) LIKE :search", search: "%#{@parameter}%") 
-      end  
-    end
   
     private
     def task_params
