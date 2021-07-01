@@ -1,37 +1,37 @@
 class TasksController < ApplicationController
     def index
+      @tasks = Task.filtered(query_params).page(params[:page]).per(5)
       @tasks = case params[:order]
         when 'by_sort_create_time_desc'
-          Task.order('created_at DESC')
+          @tasks.order('created_at DESC')
         when 'by_sort_create_time_asc'
-          Task.order('created_at ASC')
+          @tasks.order('created_at ASC')
 
         when 'by_sort_priority_desc'
-          Task.order('priority DESC')
+          @tasks.order('priority DESC')
         when 'by_sort_priority_asc'
-          Task.order('priority ASC')
+          @tasks.order('priority ASC')
 
         when 'by_sort_status_desc'
-          Task.order('status DESC')
+          @tasks.order('status DESC')
         when 'by_sort_status_asc'
-          Task.order('status ASC')
+          @tasks.order('status ASC')
 
         when 'by_sort_start_time_desc'
-          Task.order('start_time DESC')
+          @tasks.order('start_time DESC')
         when 'by_sort_start_time_asc'
-          Task.order('start_time ASC')
+          @tasks.order('start_time ASC')
 
         when 'by_sort_end_time_desc'
-          Task.order('end_time DESC')
+          @tasks.order('end_time DESC')
         when 'by_sort_end_time_asc'
-          Task.order('end_time ASC')
+          @tasks.order('end_time ASC')
         
         when 'by_sort_id_desc'
-          Task.order('id DESC')
+          @tasks.order('id DESC')
         else
-          Task.order('id ASC')
+          @tasks.order('id ASC')
       end
-      @tasks = Task.filtered(query_params)
     end
   
     def new
