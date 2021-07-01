@@ -2,11 +2,46 @@ class Task < ApplicationRecord
   #relation
   belongs_to :user
   has_many :label_map
+
   #validates
   validates :user_id, :start_time, :end_time, :task_name, presence: true
-  validates :priority, presence: true, numericality: {less_than_or_equal_to: 10}
-  validates :status, presence: true, numericality: {less_than_or_equal_to: 6}
+  validates :priority, presence: true, numericality: {
+    greater_than_or_equal_to: 0, less_than_or_equal_to: 5
+  }
+  validates :status, presence: true, numericality: {
+    greater_than_or_equal_to: 0, less_than_or_equal_to: 2
+  }
   validate :validate_content_with_task_name
+
+  #class method
+  def self.by_status(status)
+    if status.present?
+      where(status: status)
+    else
+      all
+    end
+  end
+
+  def self.by_priority(priority)
+    if (priority.present?)
+      where(priority: priority)
+    else
+      all
+    end
+  end
+
+  def self.by_keyword(keyword)
+    if keyword.present?
+      where("task_name ILIKE :search", search: "%#{keyword}%")
+    else
+      all
+    end
+  end
+
+  def self.filtered(query_params)
+    Task.by_status(query_params[:status]).by_priority(query_params[:priority]).by_keyword(query_params[:keyword])
+  end
+
   #method
   def validate_content_with_task_name
     if ( task_name.present? && content.blank? )

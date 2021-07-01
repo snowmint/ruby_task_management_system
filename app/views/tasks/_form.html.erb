@@ -15,10 +15,10 @@
   <%= t.datetime_select :end_time %> <br />
  
   <%= t.label :priority, raw(t('activerecord.attributes.tasks.priority')) %>
-  <%= t.number_field :priority %> <br />
+  <%= t.number_field :priority, in: 0...6 %> <br />
 
   <%= t.label :status, raw(t('activerecord.attributes.tasks.status')) %>
-  <%= t.number_field :status %> <br />
+  <%= t.number_field :status, in: 0...3%> <br />
 
   <%= t.submit %>
 <% end %>

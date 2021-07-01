@@ -65,6 +65,8 @@ en:
     edit_task: "Edit"
     delete_task: "Delete"
     back_to_task_list: "Back to task list"
+    enter_keyword: "Enter keyword"
+    serch_task: "Search"
   activerecord:
     attributes:
       tasks:

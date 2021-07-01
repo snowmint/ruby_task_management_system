@@ -34,6 +34,8 @@
     edit_task: "編輯任務"
     delete_task: "刪除任務"
     back_to_task_list: "回到任務列表"
+    enter_keyword: "輸入關鍵字"
+    serch_task: "搜尋"
   activerecord:
     attributes:
       tasks:
