@@ -2,25 +2,22 @@
 <div class="container-fluid">
   <h1><%= raw(t('task_relate.task_list')) %></h1>
   
-  <%= form_for :query, url: root_path, method: :get do |form| %>
-    <div class="field form-group" style="display:inline-block;">
-      <%= form.text_field :keyword, placeholder: raw(t('task_relate.enter_keyword')), value: params.dig('query', 'keyword'), class: "form-control" %>
-    </div>
-
-    <div class="field form-group" style="display:inline-block;">
-      <%= form.label Task.human_attribute_name("tasks.priority"), for: "task_priority" %>
-      <%= form.select :priority, [['', nil], ['Urgent', 0], ['Highest', 1], ['High', 2], ['Normal', 3], ['Low', 4], ['Lowest', 5]], selected: params.dig('query', 'priority'), class: "form-select form-control", id: "task_priority"%>
-    </div>
-
-    <div class="field form-group" style="display:inline-block;">
-      <%= form.label Task.human_attribute_name("tasks.status"), for: "task_status" %>
-      <%= form.select :status, [['', nil], ['Pending', 0], ['In progress', 1], ['Complete', 2]], selected: params.dig('query', 'status'), class: "form-select form-control", id: "task_status" %>
-    </div>
-
-    <div class="actions form-group" style="display:inline-block;">
-      <%= form.submit raw(t('task_relate.serch_task')), class: "form-control" %>
-    </div>
-  <% end  %>
+  <div style="margin-left: auto; margin-right: 0;">
+    <%= form_for :query, url: root_path, method: :get do |form| %>
+      <div class="field form-group" style="display:inline-block;">
+        <%= form.text_field :keyword, placeholder: raw(t('task_relate.enter_keyword')), value: params.dig('query', 'keyword'), class: "form-control" %>
+      </div>
+      <div class="field form-group" style="display:inline-block;">
+        <%= form.select :priority, options_for_select([[Task.human_attribute_name("tasks.priority"), nil], ['Urgent', 0], ['Highest', 1], ['High', 2], ['Normal', 3], ['Low', 4], ['Lowest', 5]]), {}, class: "form-control", selected: params.dig('query', 'status'), id: "task_priority" %>
+      </div>
+      <div class="field form-group" style="display:inline-block;">
+        <%= form.select :status, options_for_select([[Task.human_attribute_name("tasks.status"), nil], ['Pending', 0], ['In progress', 1], ['Complete', 2]]), {}, class: "form-control", selected: params.dig('query', 'status'), id: "task_status" %>
+      </div>
+      <div class="actions form-group" style="display:inline-block;">
+        <%= form.submit raw(t('task_relate.serch_task')), class: "form-control" %>
+      </div>
+    <% end  %>
+  </div>
 
   <div style="color:green">
       <%= flash[:success]%>
@@ -50,7 +47,7 @@
         <%= link_to( raw(t('sort.sort_status_desc')), root_path(:order => "by_sort_status_desc")) %>
       </li>
       <li>
-        <%= link_to( raw(t('sort.sort_status_desc')), root_path(:order => "by_sort_status_asc")) %>
+        <%= link_to( raw(t('sort.sort_status_asc')), root_path(:order => "by_sort_status_asc")) %>
       </li>
       
       <li>
@@ -113,7 +110,9 @@
         <% end %>
       </tbody>
     </table>
+    <div sytle="margin: auto;">
     <%= paginate @tasks %>
+    </div>
   </div>
   
 </div>
