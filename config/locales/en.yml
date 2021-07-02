@@ -67,6 +67,15 @@ en:
     back_to_task_list: "Back to task list"
     enter_keyword: "Enter keyword"
     serch_task: "Search"
+  user_relate:
+    password_comfirmation: "Password Comfirmation"
+    user_list: "Account list"
+    add_user: "Create Account"
+    edit_user: "Edit Account"
+    delete_user: "Delete Account"
+    signup_user: "Sign Up"
+    login_user: "Login"
+    logout_user: "Logout"
   activerecord:
     attributes:
       tasks:

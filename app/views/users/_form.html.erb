@@ -1,0 +1,28 @@
+<%= form_for(user, locals) do |f| %>
+  <div class="form-group">
+    <%= f.label :usesrname, raw(t('activerecord.attributes.users.username')) %>
+    <%= f.text_field :username, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, raw(t('activerecord.attributes.users.password')) %>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, raw(t('user_relate.password_comfirmation')) %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit raw(t('user_relate.add_user')), class: "btn btn-primary form-control" %>
+  </div>
+<% end %>
+
+<% if @user.errors.any? %>
+  <ul style="color:red">
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>

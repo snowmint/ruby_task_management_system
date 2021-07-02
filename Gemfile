@@ -7,6 +7,7 @@ gem 'rexml', '~> 3.2', '>= 3.2.4'
 gem 'travis', '~> 1.8', '>= 1.8.10'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
+gem 'bcrypt', '3.1.7'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets

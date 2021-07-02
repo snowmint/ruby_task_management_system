@@ -6,6 +6,7 @@ class User < ApplicationRecord
                        :uniqueness => { :message => I18n.t('errors.username_uniqueness') }
   validates_presence_of :password
   validate :password_requirements
+  validates :password, confirmation: { case_sensitive: true }
   #constant
   Rules = { #constant: start with capital letters
     I18n.t('errors.password_no_lowercase')  => /[a-z]+/,

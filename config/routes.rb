@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
   # resources :tasks
   root 'tasks#index'
   get 'tasks/new'
@@ -7,6 +8,15 @@ Rails.application.routes.draw do
   get 'tasks/:id/edit' => 'tasks#edit', as: 'edit_task'
   patch '/tasks/:id/edit' => 'tasks#update'
   delete '/tasks/:id/edit' => 'tasks#destroy'
+  
+  #resources :users
+
+  get 'users/new'
+  post '/users/new' => 'users#create', as: 'new_user'
+  get 'users/:id/edit' => 'users#edit', as: 'edit_user'
+  patch '/users/:id/edit' => 'users#update'
+  delete '/users/:id/edit' => 'users#destroy'
+  #get 'users/:id' => 'users#show', as: 'show_user'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
