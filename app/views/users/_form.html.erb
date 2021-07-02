@@ -1,11 +1,11 @@
 <%= form_for(user, locals) do |f| %>
   <div class="form-group">
-    <%= f.label :usesrname, raw(t('activerecord.attributes.users.username')) %>
+    <%= f.label :usesrname, User.human_attribute_name("users.username") %>
     <%= f.text_field :username, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password, raw(t('activerecord.attributes.users.password')) %>
+    <%= f.label :password, User.human_attribute_name("users.password") %>
     <%= f.password_field :password, class: "form-control" %>
   </div>
 

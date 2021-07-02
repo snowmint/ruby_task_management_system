@@ -1,5 +1,6 @@
 "zh-TW":
-  hello_world: 哈囉世界
+  hello_world: 哈囉！
+  home_page: "首頁"
   errors:
     task_name_without_content: "必須填寫任務內容"
     content_without_task_name: "必須填寫任務名稱"
@@ -36,6 +37,12 @@
     back_to_task_list: "回到任務列表"
     enter_keyword: "輸入關鍵字"
     serch_task: "搜尋"
+    add_success: "成功新增任務！"
+    add_fails: "新增任務失敗..."
+    edit_success: "成功編輯任務！"
+    edit_fails: "編輯任務失敗..."
+    delete_success: "成功刪除任務！"
+    delete_fails: "刪除任務失敗..."
   user_relate:
     password_comfirmation: "確認密碼"
     user_list: "帳戶列表"
@@ -43,8 +50,21 @@
     edit_user: "編輯帳戶"
     delete_user: "刪除帳戶"
     signup_user: "建立帳戶"
+    signup_now: "現在就建立帳戶！"
     login_user: "登入"
     logout_user: "登出"
+    new_user_question: "新使用者嗎？"
+    invalid_login: "錯誤的使用者帳戶/密碼"
+    add_success: "建立帳戶成功！"
+    add_fails: "建立帳戶失敗..."
+    edit_success: "成功編輯帳戶！"
+    edit_fails: "編輯帳戶失敗..."
+    delete_success: "成功刪除帳戶！"
+    delete_fails: "刪除帳戶失敗..."
+    user_account: "帳號"
+    user_profile: "個人資訊"
+    user_task: "任務列表"
+    user_setting: "設定"
   activerecord:
     attributes:
       tasks:

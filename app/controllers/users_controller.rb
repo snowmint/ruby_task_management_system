@@ -6,13 +6,14 @@ class UsersController < ApplicationController
   def create
       @user = User.new(user_params)
       if @user.save
-        flash[:success] = "Add user successfully!"
+        flash.now[:success] = I18n.t('user_relate.add_success')
         redirect_to :action => :new
       else
-        flash[:error] = "Error occurred..."
+        flash.now[:error] = I18n.t('user_relate.add_fails')
         render :action => :new
       end
   end
+
   def update
       if @user.update(user_params)
         redirect_to :action => :show, :id => @user

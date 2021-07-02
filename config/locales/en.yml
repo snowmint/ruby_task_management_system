@@ -30,7 +30,8 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello_world: "Hello world"
+  hello_world: "Hello!"
+  home_page: "Home"
   errors:
     task_name_without_content: "Must have content with task title."
     content_without_task_name: "Must have task title with content."
@@ -67,6 +68,12 @@ en:
     back_to_task_list: "Back to task list"
     enter_keyword: "Enter keyword"
     serch_task: "Search"
+    add_success: "Add task successfully!"
+    add_fails: "Failed to add task..."
+    edit_success: "Edit task successfully!"
+    edit_fails: "Failed to edit task..."
+    delete_success: "Delete task successfully!"
+    delete_fails: "Failed to delete task...."
   user_relate:
     password_comfirmation: "Password Comfirmation"
     user_list: "Account list"
@@ -74,8 +81,21 @@ en:
     edit_user: "Edit Account"
     delete_user: "Delete Account"
     signup_user: "Sign Up"
-    login_user: "Login"
-    logout_user: "Logout"
+    signup_now: "Sign Up Now!"
+    login_user: "Log in"
+    logout_user: "Log out"
+    new_user_question: "Invalid email/password combination"
+    invalid_login: "Invalid email/password combination"
+    add_success: "Create account successfully!"
+    add_fails: "Failed to create account..."
+    edit_success: "Edit account successfully!"
+    edit_fails: "Failed to edit account..."
+    delete_success: "Delete account successfully!"
+    delete_fails: "Failed to delete account..."
+    user_account: "Account"
+    user_task: "Task list"
+    user_profile: "Profile"
+    user_setting: "Setting"
   activerecord:
     attributes:
       tasks:

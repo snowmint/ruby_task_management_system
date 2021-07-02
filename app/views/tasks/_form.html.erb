@@ -1,30 +1,30 @@
 <%= form_for(task, locals) do |t| %>
   <div class="form-group">
-    <%= t.label :user_id, raw(t('activerecord.attributes.tasks.user_id')) %>
+    <%= t.label :user_id, Task.human_attribute_name("tasks.user_id") %>
     <%= t.number_field :user_id, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= t.label :task_name, raw(t('activerecord.attributes.tasks.task_name')) %>
+    <%= t.label :task_name, Task.human_attribute_name("tasks.task_name") %>
     <%= t.text_field :task_name, class: "form-control" %>
   </div>
   <div class="form-group" style="height:300px">
-    <%= t.label :content, raw(t('activerecord.attributes.tasks.content')) %>
+    <%= t.label :content, Task.human_attribute_name("tasks.content") %>
     <%= t.text_area :content, class: "form-control h-75" %>
   </div>
   <div class="form-group">
-    <%= t.label :start_time, raw(t('activerecord.attributes.tasks.start_time')) %>
+    <%= t.label :start_time, Task.human_attribute_name("tasks.start_time") %>
     <%= t.datetime_select :start_time, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= t.label :end_time, raw(t('activerecord.attributes.tasks.end_time')) %>
+    <%= t.label :end_time, Task.human_attribute_name("tasks.end_time") %>
     <%= t.datetime_select :end_time, class: "form-control" %>
   </div>
   <div class="form-group" style="display:inline-block;">
-    <%= t.label :priority, raw(t('activerecord.attributes.tasks.priority')) %>
+    <%= t.label :priority, Task.human_attribute_name("tasks.priority") %>
     <%= t.number_field :priority, in: 0...6, class: "form-control" %>
   </div>
   <div class="form-group" style="display:inline-block;">
-    <%= t.label :status, raw(t('activerecord.attributes.tasks.status')) %>
+    <%= t.label :status, Task.human_attribute_name("tasks.status") %>
     <%= t.number_field :status, in: 0...3, class: "form-control" %>
   </div>
   <div class="form-group">
