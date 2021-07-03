@@ -4,14 +4,14 @@ class UsersController < ApplicationController
   end
 
   def create
-      @user = User.new(user_params)
-      if @user.save
-        flash.now[:success] = I18n.t('user_relate.add_success')
-        redirect_to :action => :new
-      else
-        flash.now[:error] = I18n.t('user_relate.add_fails')
-        render :action => :new
-      end
+    @user = User.new(user_params)
+    if @user.save
+      flash[:success] = I18n.t('user_relate.add_success')
+      redirect_to :action => :new
+    else
+      flash[:error] = I18n.t('user_relate.add_fails')
+      render :action => :new
+    end
   end
 
   def update
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
         render :action => :edit
       end
   end
+
   def show
     #@user = User.find(params[:id])
     #debugger
