@@ -1,39 +1,8 @@
 class TasksController < ApplicationController
-  def home
-  end
+
   def index
-    @tasks = Task.filtered(query_params).page(params[:page]).per(5)
-    @tasks = case params[:order]
-      when 'by_sort_create_time_desc'
-        @tasks.order('created_at DESC')
-      when 'by_sort_create_time_asc'
-        @tasks.order('created_at ASC')
-
-      when 'by_sort_priority_desc'
-        @tasks.order('priority DESC')
-      when 'by_sort_priority_asc'
-        @tasks.order('priority ASC')
-
-      when 'by_sort_status_desc'
-        @tasks.order('status DESC')
-      when 'by_sort_status_asc'
-        @tasks.order('status ASC')
-
-      when 'by_sort_start_time_desc'
-        @tasks.order('start_time DESC')
-      when 'by_sort_start_time_asc'
-        @tasks.order('start_time ASC')
-
-      when 'by_sort_end_time_desc'
-        @tasks.order('end_time DESC')
-      when 'by_sort_end_time_asc'
-        @tasks.order('end_time ASC')
-      
-      when 'by_sort_id_desc'
-        @tasks.order('id DESC')
-      else
-        @tasks.order('id ASC')
-    end
+    @tasks = Task.by_user_id(session[:user_id]).filtered(query_params).page(params[:page]).per(5).order(sort_column + " " + sort_direction)
+    #debugger
   end
 
   def new
@@ -73,7 +42,7 @@ class TasksController < ApplicationController
       flash[:success] = I18n.t('task_relate.delete_success')
       redirect_to root_path
   end
-
+  
   private
   def task_params
     params.require(:task).permit(:user_id, :task_name, :content, :start_time, :end_time, :priority, :status)
@@ -81,7 +50,7 @@ class TasksController < ApplicationController
 
   def query_params
     query_params = params[:query]
-    query_params ? query_params.permit(:keyword, :status, :priority) : {}
+    query_params ? query_params.permit(:keyword, :status, :priority, :user_id) : {}
   end
 end
   

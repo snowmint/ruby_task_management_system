@@ -38,8 +38,16 @@ class Task < ApplicationRecord
     end
   end
 
+  def self.by_user_id(user_id)
+    if user_id.present?
+      where(user_id: user_id)
+    else
+      all
+    end
+  end
+  #session[:user_id]
   def self.filtered(query_params)
-    Task.by_status(query_params[:status]).by_priority(query_params[:priority]).by_keyword(query_params[:keyword])
+    Task.by_user_id(query_params[:user_id]).by_status(query_params[:status]).by_priority(query_params[:priority]).by_keyword(query_params[:keyword])
   end
 
   #method

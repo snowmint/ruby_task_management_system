@@ -9,5 +9,22 @@ class ApplicationController < ActionController::Base
     
       I18n.locale = session[:locale] || I18n.default_locale
     end
+
+    def sort_column
+      if params[:order]
+        Task.column_names.include?(params[:order].split()[0]) ? params[:order].split()[0] : "id"
+      else
+        Task.column_names.include?("id") ? "id" : "id"
+      end
+    end
+    
+    def sort_direction
+      if params[:order]
+        %w[asc desc].include?(params[:order].split()[1]) ? params[:order].split()[1] : "asc"
+      else
+        %w[asc desc].include?("asc") ? "asc" : "asc"
+      end
+    end
+    
     include SessionsHelper
 end

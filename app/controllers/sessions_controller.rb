@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       redirect_to show_user_path(session[:user_id])
     else
       #debugger
-      flash[:error] = I18n.t('user_relate.invalid_login') # Not quite right!
+      flash[:error] = I18n.t('user_relate.invalid_login')
       render 'new'
     end
   end

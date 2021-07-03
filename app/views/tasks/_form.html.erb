@@ -1,8 +1,10 @@
 <%= form_for(task, locals) do |t| %>
-  <div class="form-group">
-    <%= t.label :user_id, Task.human_attribute_name("tasks.user_id") %>
-    <%= t.number_field :user_id, class: "form-control" %>
-  </div>
+  <% if current_user %>
+    User ID:<%= current_user.id %>
+    User Name: <%= current_user.username %>
+    <%= t.hidden_field :user_id, value: current_user.id%>
+  <% end %>
+  
   <div class="form-group">
     <%= t.label :task_name, Task.human_attribute_name("tasks.task_name") %>
     <%= t.text_field :task_name, class: "form-control" %>

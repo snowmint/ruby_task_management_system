@@ -16,7 +16,8 @@
             <%= raw(t('user_relate.user_account')) %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to raw(t('user_relate.user_task')), show_user_path(session[:user_id]), class:"dropdown-item" %>
+            <!--%= link_to raw(t('user_relate.user_task')), show_user_path(session[:user_id]), class:"dropdown-item" %-->
+            <%= link_to raw(t('user_relate.user_task')), root_path(session[:user_id]), class:"dropdown-item" %>
             <a class="dropdown-item" href="#"><%= raw(t('user_relate.user_setting')) %></a>
             <div class="dropdown-divider"></div>
             <%= link_to raw(t('user_relate.logout_user')), logout_path, method: "delete", class:"dropdown-item" %>
@@ -30,9 +31,6 @@
           <%= link_to raw(t('user_relate.login_user')), login_path, class:"nav-link" %>
         </li>
       <% end %>
-
-
-
     </ul>
   </div>
 </nav>
