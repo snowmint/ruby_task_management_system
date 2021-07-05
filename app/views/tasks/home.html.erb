@@ -1,14 +1,17 @@
-
-<div class="masthead " style="background-image: url('/home_img.png'); height:500px; width:100%; background-size: 100% 120%;">
-    <div class="container position-relative" style="top:10%; ">
-        <div class="row gx-4 gx-lg-5 justify-content-left">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="site-heading">
-                    <h1 class="text-white display-3">Task Management</h1>
-                </div>
-            </div>
+<% if logged_in? && current_user.admin? %>
+  <div class="masthead " style="background-image: url('/home_admin.PNG'); height:500px; width:100%; background-size: 100% 120%;">
+<% else %>
+  <div class="masthead " style="background-image: url('/home_img.png'); height:500px; width:100%; background-size: 100% 120%;">
+<% end %>
+  <div class="container position-relative" style="top:10%; ">
+    <div class="row gx-4 gx-lg-5 justify-content-left">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1 class="text-white display-3">Task Management</h1>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <section id="first">

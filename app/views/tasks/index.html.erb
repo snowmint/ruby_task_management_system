@@ -4,6 +4,7 @@
     <div class="container-fluid">
       <br/>
       <h1><%= @current_user.username %> <%= raw(t('task_relate.task_list')) %></h1>
+      <p><%= user_role(@current_user.admin) %></p>
 
       <div style="margin-left: auto; margin-right: 0;">
         <%= form_for :query, url: root_path, method: :get do |form| %>

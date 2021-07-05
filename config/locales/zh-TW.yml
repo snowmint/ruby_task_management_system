@@ -1,6 +1,7 @@
 "zh-TW":
   hello_world: 哈囉！
   home_page: "首頁"
+  admin_page: "管理頁面"
   errors:
     task_name_without_content: "必須填寫任務內容"
     content_without_task_name: "必須填寫任務名稱"
@@ -65,6 +66,8 @@
     user_profile: "個人資訊"
     user_task: "任務列表"
     user_setting: "設定"
+    role_admin: "管理者"
+    role_member: "使用者"
   activerecord:
     attributes:
       tasks:
@@ -84,3 +87,4 @@
       users:
         username: "使用者名稱"
         password: "密碼"
+        admin: "管理權限"

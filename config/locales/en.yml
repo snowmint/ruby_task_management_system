@@ -32,6 +32,7 @@
 en:
   hello_world: "Hello!"
   home_page: "Home"
+  admin_page: "Admin Page"
   errors:
     task_name_without_content: "Must have content with task title."
     content_without_task_name: "Must have task title with content."
@@ -96,6 +97,8 @@ en:
     user_task: "Task list"
     user_profile: "Profile"
     user_setting: "Setting"
+    role_admin: "Administrator"
+    role_member: "Member"
   activerecord:
     attributes:
       tasks:
@@ -115,3 +118,4 @@ en:
       users:
         username: "Username"
         password: "Password"
+        admin: "Admin Permission"
