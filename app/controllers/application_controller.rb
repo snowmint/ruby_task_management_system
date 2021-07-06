@@ -12,20 +12,12 @@ class ApplicationController < ActionController::Base
   end
   
   def sort_column
-    if params[:order]
-      split_order = params[:order].split()
-      Task.column_names.include?(split_order[0]) ? split_order[0] : "id"
-    else
-      "id"
-    end
+    split_order = params[:order].split()
+    Task.column_names.include?(split_order[0]) ? split_order[0] : "id"
   end
   
   def sort_direction
-    if params[:order]
-      split_order = params[:order].split()
-      %w[asc desc].include?(split_order[1]) ? split_order[1] : "asc"
-    else
-      "asc"
-    end
+    split_order = params[:order].split()
+    %w[asc desc].include?(split_order[1]) ? split_order[1] : "asc"
   end
 end
