@@ -1,23 +1,19 @@
-<%= form_for(user, locals) do |f| %>
+<%= form_for(user_params, locals) do |f| %>
   <% if locals[:html][:class] == "new_user" %>
     <% locals[:html][:class] = "add_user" %>
   <% end %>
-
   <div class="form-group">
     <%= f.label :usesrname, User.human_attribute_name("users.username") %>
-    <%= f.text_field :username, class: "form-control" %>
+    <%= f.text_field :username, class: "form-control",  value:user_params[0].username %>
   </div>
-
   <div class="form-group">
     <%= f.label :password, User.human_attribute_name("users.password") %>
     <%= f.password_field :password, class: "form-control" %>
   </div>
-
   <div class="form-group">
     <%= f.label :password_confirmation, raw(t('user_relate.password_comfirmation')) %>
     <%= f.password_field :password_confirmation, class: "form-control" %>
   </div>
-
   <div class="form-group">
     <%= f.submit raw(t('user_relate.' + locals[:html][:class])), class: "btn btn-primary form-control" %>
   </div>

@@ -8,6 +8,7 @@
         <tr>
           <th> <%= User.human_attribute_name("users.username") %> </th>
           <th> <%= User.human_attribute_name("users.create_time") %> </th>
+          <th> <%= raw(t("user_relate.num_of_tasks")) %> </th>
           <% if current_user.admin? && !current_user?(@user) %>
             <th> <%= User.human_attribute_name("users.handle") %> </th>
           <% end %>
@@ -18,8 +19,12 @@
         <tr>
           <td><%= user.username %></td>
           <td><%= user.created_at %></td>
+          <td><%= user.tasks.count %></td>
           <% if current_user.admin? && !current_user?(user) %>
             <td>
+              <%= user.id %>
+              <%= link_to raw(t('task_relate.task_list')), show_task_path(user) %>
+              <%= link_to raw(t('user_relate.edit_user')), edit_user_path(user) %>
               <%= link_to raw(t('user_relate.delete_user')), edit_user_path(user), method: "delete", data: { confirm: "Comfirm to delete acoount: " + user.username } %>
             </td>
           <% end %>

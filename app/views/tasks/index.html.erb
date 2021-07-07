@@ -84,7 +84,7 @@
         <table class="table table-striped table-hover">
           <thead>
             <tr>
-              <!--th> <%= Task.human_attribute_name("tasks.user_id") %> </th-->
+              <th> <%= Task.human_attribute_name("tasks.user_id") %> </th>
               <th> <%= Task.human_attribute_name("tasks.task_name") %> </th>
               <th> <%= Task.human_attribute_name("tasks.content") %> </th>
               <th> <%= Task.human_attribute_name("tasks.start_time") %> </th>
@@ -98,7 +98,7 @@
           <tbody>
             <% @tasks.each do |task| %>
             <tr>
-              <!--td><%= task.user_id%></td-->
+              <td><%= task.user_id %></td>
               <td><%= task.task_name %></td>
               <td><%= task.content %></td>
               <td><%= task.start_time %></td>
@@ -118,7 +118,6 @@
           <%= paginate @tasks %>
         </div>
       </div>
-      
     </div>
   <% else %>
     <h1>Please Log In First.</h1>

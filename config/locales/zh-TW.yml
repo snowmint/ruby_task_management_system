@@ -13,6 +13,7 @@
     password_no_lowercase: "密碼必須含有至少一個小寫字母"
     password_no_uppercase: "密碼必須含有至少一個大寫字母"
     password_no_digit: "密碼必須含有至少一個數字"
+    password_diff: "密碼錯誤"
 
   sort:
     sort_title: "排序方法"
@@ -68,6 +69,7 @@
     user_setting: "設定"
     role_admin: "管理者"
     role_member: "使用者"
+    num_of_tasks: "任務數量"
   activerecord:
     attributes:
       tasks:

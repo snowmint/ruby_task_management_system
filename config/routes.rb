@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     patch '/tasks/:id/edit' => 'tasks#update'
     delete '/tasks/:id/edit' => 'tasks#destroy'
     get 'tasks/home' => 'tasks#home', as: 'home_task'
+    get 'tasks/:id/show' => 'tasks#show', as: 'show_task'
     #resources :users
     get 'users/new'
     post '/users/new' => 'users#create', as: 'new_user'
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
   patch '/tasks/:id/edit' => 'tasks#update'
   delete '/tasks/:id/edit' => 'tasks#destroy'
   get 'tasks/home' => 'tasks#home', as: 'home_task'
+  get 'tasks/:id/show' => 'tasks#show', as: 'show_task'
   #resources :users
   get 'users/new'
   get 'users/index' => 'users#index', as: 'list_user'

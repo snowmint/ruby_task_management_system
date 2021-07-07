@@ -44,6 +44,7 @@ en:
     password_no_lowercase: "Password must contain at least one lowercase letter"
     password_no_uppercase: "Password must contain at least one uppercase letter" 
     password_no_digit: "Password must contain at least one digit"
+    password_diff: "Wrong password"
 
   sort:
     sort_title: "Sort by "
@@ -99,6 +100,7 @@ en:
     user_setting: "Setting"
     role_admin: "Administrator"
     role_member: "Member"
+    num_of_tasks: "Number of task"
   activerecord:
     attributes:
       tasks:
