@@ -15,7 +15,7 @@ class Task < ApplicationRecord
 
   #class method
   def self.by_status(status)
-    if status.present?
+    if !status.blank?
       where(status: status)
     else
       all
@@ -23,7 +23,7 @@ class Task < ApplicationRecord
   end
 
   def self.by_priority(priority)
-    if (priority.present?)
+    if !priority.blank?
       where(priority: priority)
     else
       all
@@ -31,7 +31,7 @@ class Task < ApplicationRecord
   end
 
   def self.by_keyword(keyword)
-    if keyword.present?
+    if !keyword.blank?
       where("task_name ILIKE :search", search: "%#{keyword}%")
     else
       all
@@ -39,7 +39,7 @@ class Task < ApplicationRecord
   end
 
   def self.by_user_id(user_id)
-    if user_id.present?
+    if !user_id.blank?
       where(user_id: user_id)
     else
       all
