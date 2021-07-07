@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get 'tasks/home' => 'tasks#home', as: 'home_task'
   #resources :users
   get 'users/new'
+  get 'users/index' => 'users#index', as: 'list_user'
   post '/users/new' => 'users#create', as: 'new_user'
   get 'users/:id/edit' => 'users#edit', as: 'edit_user'
   patch '/users/:id/edit' => 'users#update'

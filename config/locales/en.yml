@@ -119,3 +119,6 @@ en:
         username: "Username"
         password: "Password"
         admin: "Admin Permission"
+        create_time: "Create time"
+        update_time: "Update time"
+        handle: "Handle"

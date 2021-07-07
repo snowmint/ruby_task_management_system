@@ -1,7 +1,12 @@
 class TasksController < ApplicationController
+  before_action :task_find_by_id, only:[:edit, :update, :destroy]
+  
+  def current_scope
+    current_user ? current_user.tasks : Task
+  end
 
   def index
-    @tasks = Task.by_user_id(session[:user_id]).filtered(query_params).page(params[:page]).per(5).order(sort_column + " " + sort_direction)
+    @tasks = current_scope.filtered(query_params).page(params[:page]).per(5).order(sort_column + " " + sort_direction)
     #debugger
   end
 
@@ -22,12 +27,9 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = Task.find_by(id: params[:id])
   end
 
   def update
-    @task = Task.find_by(id: params[:id])
-
     if @task.update(task_params)
       flash[:success] = I18n.t('task_relate.edit_success')
       redirect_to root_path
@@ -37,12 +39,11 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find_by(id: params[:id])
     @task.destroy if @task
       flash[:success] = I18n.t('task_relate.delete_success')
       redirect_to root_path
   end
-  
+
   private
   def task_params
     params.require(:task).permit(:user_id, :task_name, :content, :start_time, :end_time, :priority, :status)
@@ -51,6 +52,10 @@ class TasksController < ApplicationController
   def query_params
     query_params = params[:query]
     query_params ? query_params.permit(:keyword, :status, :priority, :user_id) : {}
+  end
+
+  def task_find_by_id
+    @task = Task.find(params['id'])
   end
 end
   

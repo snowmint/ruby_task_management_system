@@ -88,3 +88,6 @@
         username: "使用者名稱"
         password: "密碼"
         admin: "管理權限"
+        create_time: "建立時間"
+        update_time: "更新時間"
+        handle: "操作"
