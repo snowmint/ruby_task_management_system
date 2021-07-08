@@ -60,7 +60,7 @@ class TasksController < ApplicationController
     end
 
     def task_find_by_id
-      @tasks = Task.find(params['id'])
+      @task = Task.find(params['id'])
     end
 end
   
