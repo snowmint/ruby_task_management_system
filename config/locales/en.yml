@@ -40,6 +40,9 @@ en:
     username_blank: "Username can't be blank"
     username_uniqueness: "Error: Duplicate Username"
 
+    email_blank: "Email can't be blank"
+    email_uniqueness: "Error: Duplicate Email Address"
+
     password_blank: "Password can't be blank"
     password_no_lowercase: "Password must contain at least one lowercase letter"
     password_no_uppercase: "Password must contain at least one uppercase letter" 
@@ -78,6 +81,9 @@ en:
     delete_fails: "Failed to delete task...."
   user_relate:
     password_comfirmation: "Password Comfirmation"
+    new_password: "New Password"
+    new_password_comfirmation: "New Password Comfirmation"
+    current_password: "Current Password"
     user_list: "Account list"
     add_user: "Create Account"
     edit_user: "Edit Account"
@@ -118,8 +124,10 @@ en:
         label_name: "Label name"
         num_of_use: "Number of use"
       users:
+        id: "User ID"
         username: "Username"
         password: "Password"
+        email: "Email Address"
         admin: "Admin Permission"
         create_time: "Create time"
         update_time: "Update time"

@@ -9,6 +9,9 @@
     username_blank: "使用者名稱不可為空"
     username_uniqueness: "錯誤：使用者名稱已被使用"
 
+    email_blank: "電子信箱不可為空"
+    email_uniqueness: "錯誤：電子信箱已被使用"
+
     password_blank: "密碼不可為空"
     password_no_lowercase: "密碼必須含有至少一個小寫字母"
     password_no_uppercase: "密碼必須含有至少一個大寫字母"
@@ -47,6 +50,9 @@
     delete_fails: "刪除任務失敗..."
   user_relate:
     password_comfirmation: "確認密碼"
+    new_password: "新密碼"
+    new_password_comfirmation: "新密碼確認"
+    current_password: "原密碼"
     user_list: "帳戶列表"
     add_user: "建立帳戶"
     edit_user: "編輯帳戶"
@@ -87,8 +93,10 @@
         label_name: "標籤名稱"
         num_of_use: "使用次數"
       users:
+        id: "使用者ID"
         username: "使用者名稱"
         password: "密碼"
+        email: "電子信箱"
         admin: "管理權限"
         create_time: "建立時間"
         update_time: "更新時間"
