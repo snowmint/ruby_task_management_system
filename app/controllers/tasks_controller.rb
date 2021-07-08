@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :task_find_by_id, only:[:edit, :update, :destroy]
+
   def index
     @tasks = current_scope.filtered(query_params).page(params[:page]).per(5).order(sort_column + " " + sort_direction)
     #debugger
@@ -43,8 +45,6 @@ class TasksController < ApplicationController
   end
 
   private
-
-    before_action :task_find_by_id, only:[:edit, :update, :destroy]
 
     def current_scope
       current_user ? current_user.tasks : Task

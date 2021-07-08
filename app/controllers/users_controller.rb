@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  before_action :user_find_by_id, only:[:edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :correct_user,   only: [:edit, :update]
+  before_action :admin_user,     only: :destroy
+
   def index
     @users = User.page(params[:page]).per(3)
   end
@@ -39,11 +44,6 @@ class UsersController < ApplicationController
 
   private
 
-    before_action :user_find_by_id, only:[:edit, :update, :destroy]
-    before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-    before_action :correct_user,   only: [:edit, :update]
-    before_action :admin_user,     only: :destroy
-    
     def user_params
       custom_params = params.require(:user).permit(:username, :password, :password_confirmation)
     end
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_path) unless @user == current_user || current_user.admin?
+      redirect_to(root_path) if @user != current_user && !current_user.admin?
     end
 
     def user_find_by_id

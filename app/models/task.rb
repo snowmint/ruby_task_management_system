@@ -15,37 +15,21 @@ class Task < ApplicationRecord
 
   #class method
   def self.by_status(status)
-    if !status.blank?
-      where(status: status)
-    else
-      all
-    end
+    status.blank? ? all : where(status: status)
   end
 
   def self.by_priority(priority)
-    if !priority.blank?
-      where(priority: priority)
-    else
-      all
-    end
+    priority.blank? ? all : where(priority: priority)
   end
 
   def self.by_keyword(keyword)
-    if !keyword.blank?
-      where("task_name ILIKE :search", search: "%#{keyword}%")
-    else
-      all
-    end
+    keyword.blank? ? all : where("task_name ILIKE :search", search: "%#{keyword}%")
   end
 
   def self.by_user_id(user_id)
-    if !user_id.blank?
-      where(user_id: user_id)
-    else
-      all
-    end
+    user_id.blank? ? all : where(user_id: user_id)
   end
-  #session[:user_id]
+
   def self.filtered(query_params)
     Task.by_user_id(query_params[:user_id]).by_status(query_params[:status]).by_priority(query_params[:priority]).by_keyword(query_params[:keyword])
   end
