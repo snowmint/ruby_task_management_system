@@ -1,10 +1,7 @@
 class User < ApplicationRecord
-  attr_accessor :name, :email
+  #attr_accessor :username, :email
   attr_accessor :current_password
 
-  before_save { username.downcase! }
-  before_save { email.downcase! }
-  
   #relation
   has_many :tasks, dependent: :destroy
   #validates
@@ -20,9 +17,13 @@ class User < ApplicationRecord
   validates_presence_of :password
   validate :password_requirements
   validates :password, confirmation: { case_sensitive: true }
+
+  #validates_presence_of :current_password, on: :update #if use validates instead of the if condition in the :same_password_is_correct method will couldn't get the current_password (get nil)
   validate :same_password_is_correct, on: :update
   
-  
+  #callback
+  before_save { username.downcase! }
+  before_save { email.downcase! }
 
   #constant
   Rules = { #constant: start with capital letters
@@ -40,8 +41,7 @@ class User < ApplicationRecord
 
   def same_password_is_correct
     if !current_password.blank?
-      user = User.find_by_id(id)
-      if !user.authenticate(current_password)
+      if !current_user.admin || !current_user.authenticate(current_password) || !user.authenticate(current_password)
         errors.add(:current_password, I18n.t('errors.password_diff'))
       end
     end

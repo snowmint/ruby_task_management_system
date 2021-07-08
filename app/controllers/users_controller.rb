@@ -38,6 +38,7 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+    #debugger
   end
 
   def destroy
