@@ -12,17 +12,34 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <% params[:user_id] = session[:user_id] %>
   </head>
   <body>
     <%= render 'tasks/header'%>
-    <div class="container">
-      <br />
+    <div class="wrapper">
       <%= yield %>
+      <!--%= debug(params) if Rails.env.development? %-->
     </div>
     <br /><br />
-    
-    <%= link_to "中文版", :controller => controller_name, :action => action_name, :locale => "zh-TW" %>
-    <%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %>
-
   </body>
+  <% if logged_in? && current_user.admin? %>
+    <footer class="bg-primary text-white text-right text-lg-start fixed-bottom" style="height:50px">
+  <% else %>
+    <footer class="bg-dark text-white text-right text-lg-start fixed-bottom" style="height:50px">
+  <% end %>
+    <% if logged_in? && current_user.admin? %>
+      <div class="btn btn-primary btn-group-toggle align-middle" style="text-align:center;text-decoration: none;vertical-align: middle">
+    <% else %>
+      <div class="btn btn-secondary btn-group-toggle align-middle" style="text-align:center;text-decoration: none;vertical-align: middle">
+    <% end %>
+      <%= link_to "中文版", {:controller => controller_name, :action => action_name, :locale => "zh-TW"}, :style => "color:white;text-decoration: none" %>
+    </div>
+    <% if logged_in? && current_user.admin? %>
+      <div class="btn btn-primary btn-group-toggle align-middle" style="text-align:center;text-decoration: none;vertical-align: middle">
+    <% else %>
+      <div class="btn btn-secondary btn-group-toggle align-middle" style="text-align:center;text-decoration: none;vertical-align: middle">
+    <% end %>
+      <%= link_to "English", {:controller => controller_name, :action => action_name, :locale => "en"}, :style => "color:white;text-decoration: none" %>
+    </div>
+  </footer>
 </html>
