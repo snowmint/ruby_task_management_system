@@ -15,8 +15,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = I18n.t('user_relate.add_success')
-      redirect_to login_path
+      if current_user.admin?
+        flash[:success] = I18n.t('user_relate.add_success')
+        redirect_to list_user_path
+      else
+        flash[:success] = I18n.t('user_relate.add_success')
+        redirect_to login_path
+      end
     else
       flash[:error] = I18n.t('user_relate.add_fails')
       render :action => :new
@@ -45,7 +50,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      custom_params = params.require(:user).permit(:username, :password, :password_confirmation)
+      custom_params = params.require(:user).permit(:username, :email, :password, :password_confirmation)
     end
 
     def logged_in_user

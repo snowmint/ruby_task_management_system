@@ -2,6 +2,7 @@ class Task < ApplicationRecord
   #relation
   belongs_to :user
   has_many :label_map
+  has_many :labels, through: :label_map
 
   #validates
   validates :user_id, :start_time, :end_time, :task_name, presence: true
