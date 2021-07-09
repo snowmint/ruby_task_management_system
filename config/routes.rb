@@ -13,11 +13,11 @@ Rails.application.routes.draw do
     get 'tasks/:id/show' => 'tasks#show', as: 'show_task'
     #resources :users
     get 'users/new'
+    get 'users/index' => 'users#index', as: 'list_user'
     post '/users/new' => 'users#create', as: 'new_user'
     get 'users/:id/edit' => 'users#edit', as: 'edit_user'
     patch '/users/:id/edit' => 'users#update'
     delete '/users/:id/edit' => 'users#destroy'
-    get 'users/show' => 'users#show', as: 'show_user'
 
     get    'login'   => 'sessions#new'
     post   'login'   => 'sessions#create'

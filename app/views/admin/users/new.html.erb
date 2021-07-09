@@ -1,0 +1,22 @@
+<div class="container">
+  <br/>
+  <% provide(:title, 'Sign up') %>
+
+  <div style="color:green">
+    <%= flash[:success]%>
+  </div>
+
+  <div style="color:red">
+    <%= flash[:error]%>
+  </div>
+
+  <div>
+    <h1><%= raw(t('user_relate.add_user')) %></h1>
+    <br />
+    <div class="row", style="margin: auto;">
+    <div class="col-md-6 col-md-offset-3">
+        <%= render "form", user: @user, locals: { url: admin_users_new_path } %>
+    </div>
+    </div>
+  </div>
+</div>

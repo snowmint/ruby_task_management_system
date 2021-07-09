@@ -9,10 +9,10 @@ RSpec.describe User, type: :model do
   subject { @user }
 
   it { should respond_to(:username) }
-  it { should respond_to(:email) }
-  it { should respond_to(:password_digest) }
-  it { should respond_to(:password) }
-  it { should respond_to(:password_confirmation) }
+  it { should validate_presence_of(:email) }
+  it { should validate_presence_of(:password_digest) }
+  it { should validate_presence_of(:password) }
+  it { should validate_presence_of(:password_confirmation) }
   # it { is_expected.to validate_presence_of(:username) }
   # it { is_expected.to validate_presence_of(:email) }
   # it { is_expected.to validate_presence_of(:password_digest) }

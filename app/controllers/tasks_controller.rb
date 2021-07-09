@@ -46,21 +46,21 @@ class TasksController < ApplicationController
 
   private
 
-    def current_scope
-      current_user ? current_user.tasks : Task
-    end
+  def current_scope
+    current_user ? current_user.tasks : Task
+  end
 
-    def task_params
-      params.require(:task).permit(:user_id, :task_name, :content, :start_time, :end_time, :priority, :status)
-    end
+  def task_params
+    params.require(:task).permit(:user_id, :task_name, :content, :start_time, :end_time, :priority, :status)
+  end
 
-    def query_params
-      query_params = params[:query]
-      query_params ? query_params.permit(:keyword, :status, :priority, :user_id) : {}
-    end
+  def query_params
+    query_params = params[:query]
+    query_params ? query_params.permit(:keyword, :status, :priority, :user_id) : {}
+  end
 
-    def task_find_by_id
-      @task = current_scope.find(params['id'])
-    end
+  def task_find_by_id
+    @task = current_scope.find(params['id'])
+  end
 end
   

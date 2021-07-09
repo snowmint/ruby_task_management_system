@@ -1,0 +1,43 @@
+<div class="container">
+  <% provide(:title, 'All users') %>
+  <br />
+  <h1><%= raw(t('user_relate.user_list')) %></h1>
+  <%= link_to raw(t('user_relate.add_user')), admin_new_user_path %>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+        <th> <%= User.human_attribute_name("users.id") %> </th>
+          <th> <%= User.human_attribute_name("users.username") %> </th>
+          <th> <%= User.human_attribute_name("users.email") %> </th>
+          <th> <%= User.human_attribute_name("users.create_time") %> </th>
+          <th> <%= raw(t("user_relate.num_of_tasks")) %> </th>
+          <% if current_user.admin? && !current_user?(@user) %>
+            <th> <%= User.human_attribute_name("users.handle") %> </th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td><%= user.created_at %></td>
+          <td><%= user.tasks.count %></td>
+          <% if current_user.admin? && !current_user?(user) %>
+            <td>
+              <%= link_to raw(t('task_relate.task_list')), admin_show_task_path(user) %>
+              <%= link_to raw(t('user_relate.edit_user')), admin_edit_user_path(user) %>
+              <%= link_to raw(t('user_relate.delete_user')), admin_edit_user_path(user), method: "delete", data: { confirm: "Comfirm to delete acoount: " + user.username } %>
+            </td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div sytle="margin: auto;">
+      <%= paginate @users %>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@ class Admin::BaseController < ApplicationController
     end
 
     def admin_check
-        if !cureent_user.admin
+        if !current_user.admin
             redirect_to admin_login_path, notice: "permission denied..."
         end
     end

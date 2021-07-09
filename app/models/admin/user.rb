@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class Admin::User < ApplicationRecord
   #attr_accessor :username, :email
   attr_accessor :current_password
 

@@ -85,6 +85,9 @@ GEM
     erubi (1.10.0)
     ethon (0.14.0)
       ffi (>= 1.15.0)
+    fabrication (2.22.0)
+    faker (2.18.0)
+      i18n (>= 1.6, < 2)
     faraday (0.17.4)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.14.0)
@@ -280,6 +283,8 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  fabrication
+  faker
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.3)
