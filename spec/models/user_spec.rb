@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'shoulda/matchers'
 
 RSpec.describe User, type: :model do
   before do
@@ -12,6 +13,11 @@ RSpec.describe User, type: :model do
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  # it { is_expected.to validate_presence_of(:username) }
+  # it { is_expected.to validate_presence_of(:email) }
+  # it { is_expected.to validate_presence_of(:password_digest) }
+  # it { is_expected.to validate_presence_of(:password) }
+  # it { is_expected.to validate_presence_of(:password_confirmation) }
 
   it { should be_valid }
 
@@ -56,8 +62,4 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "when password is not present" do
-    before { @user.password = @user.password_confirmation = " " }
-    it { should_not be_valid }
-  end
 end

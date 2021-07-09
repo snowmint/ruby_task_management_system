@@ -74,6 +74,7 @@
     user_task: "任務列表"
     user_setting: "設定"
     role_admin: "管理者"
+    role_admin_password: "管理者密碼"
     role_member: "使用者"
     num_of_tasks: "任務數量"
   activerecord:
