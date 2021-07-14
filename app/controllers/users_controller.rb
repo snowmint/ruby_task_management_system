@@ -2,11 +2,6 @@ class UsersController < ApplicationController
   before_action :user_find_by_id, only:[:edit, :update, :destroy]
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
-
-  def index
-    @users = User.page(params[:page]).per(3)
-  end
 
   def new
     @user = User.new
@@ -16,11 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = I18n.t('user_relate.add_success')
-      if current_user.admin?
-        redirect_to list_user_path
-      else
-        redirect_to login_path
-      end
+      redirect_to login_path
     else
       flash[:error] = I18n.t('user_relate.add_fails')
       render :action => :new
@@ -48,7 +39,11 @@ class UsersController < ApplicationController
   end
 
   private
-  
+  def authorize_admin
+    redirect_to root_path, alert: "Permissions denied" unless
+      current_user.admin?
+  end
+
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
@@ -67,9 +62,5 @@ class UsersController < ApplicationController
 
   def user_find_by_id
     @user = User.find(params['id'])
-  end
-
-  def admin_user
-    redirect_to(root_path) unless current_user.admin?
   end
 end

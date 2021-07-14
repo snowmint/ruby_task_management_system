@@ -77,6 +77,7 @@
     role_admin_password: "管理者密碼"
     role_member: "使用者"
     num_of_tasks: "任務數量"
+    at_least_one_admin: "失敗，至少需要一位管理者存在"
   activerecord:
     attributes:
       tasks:

@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
-    # it { is_expected.to validate_presence_of(:username) }
+  # it { is_expected.to validate_presence_of(:username) }
   # it { is_expected.to validate_presence_of(:email) }
   # it { is_expected.to validate_presence_of(:password_digest) }
   # it { is_expected.to validate_presence_of(:password) }

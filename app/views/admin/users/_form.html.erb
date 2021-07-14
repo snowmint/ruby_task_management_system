@@ -3,6 +3,10 @@
     <% locals_for_translate = "edit_user"%>
   <% elsif locals[:html][:class] == "new_admin_user" %>
     <% locals_for_translate = "add_user"%>
+  <% elsif locals[:html][:class] == "edit_user" %>
+    <% locals_for_translate = "edit_user"%>
+  <% elsif locals[:html][:class] == "new_user" %>
+    <% locals_for_translate = "add_user"%>
   <% end %>
   <div class="form-group">
     <%= f.label :usesrname, Admin::User.human_attribute_name("users.username") %>
@@ -14,8 +18,8 @@
     <%= f.text_field :email, class: "form-control" %>
   </div>
 
-  <% if locals[:html][:class] == "edit_admin_user" %>
-    <% if @user.id == current_user.id %>
+  <% if locals[:html][:class] == "edit_user" %>
+    <% if user.id == current_user.id %>
       <div class="form-group">
         <%= f.label :password, raw(t('user_relate.new_password')) %>
         <%= f.password_field :password, class: "form-control" %>
@@ -36,7 +40,7 @@
     <% end %>
   <% else %>
     <div class="form-group">
-      <%= f.label :password, Admin::User.human_attribute_name("users.password") %>
+      <%= f.label :password, User.human_attribute_name("users.password") %>
       <%= f.password_field :password, class: "form-control" %>
     </div>
     <div class="form-group">
@@ -46,7 +50,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.submit raw(t('user_relate.' + locals_for_translate)), class: "btn btn-primary form-control" %>
+    <%= f.submit raw(t( "user_relate." + locals_for_translate.to_s )), class: "btn btn-primary form-control" %>
   </div>
 <% end %>
 
