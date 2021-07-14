@@ -2,6 +2,11 @@ class UsersController < ApplicationController
   before_action :user_find_by_id, only:[:edit, :update, :destroy]
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
+  
+  def index
+    flash[:error] = "Permission denied"
+    redirect_to root_path
+  end
 
   def new
     @user = User.new
@@ -63,4 +68,9 @@ class UsersController < ApplicationController
   def user_find_by_id
     @user = User.find(params['id'])
   end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+  
 end
