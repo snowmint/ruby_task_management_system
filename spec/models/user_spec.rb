@@ -87,5 +87,4 @@ RSpec.describe User, type: :model do
       specify { expect(user_for_invalid_password).to be false }
     end
   end
-
 end
