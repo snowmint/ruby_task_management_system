@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Logged in successfully."
       log_in user
       redirect_to root_path(session[:user_id])
-      debugger
+      #debugger
     else
       #debugger
       flash[:error] = I18n.t('user_relate.invalid_login')
