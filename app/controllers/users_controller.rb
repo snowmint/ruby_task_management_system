@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     else
       render :edit
     end
-    debugger
+    #debugger
   end
 
   def destroy

@@ -81,6 +81,7 @@ GEM
     concurrent-ruby (1.1.9)
     connection_pool (2.2.5)
     crass (1.0.6)
+    database_rewinder (0.9.6)
     diff-lcs (1.4.4)
     erubi (1.10.0)
     ethon (0.14.0)
@@ -288,7 +289,9 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  database_rewinder
   fabrication
+  factory_bot
   factory_bot_rails
   faker
   jbuilder (~> 2.7)
