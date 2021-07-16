@@ -8,6 +8,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     @users = User.page(params[:page]).per(3)
+    #debugger
   end
 
   def new
@@ -40,7 +41,7 @@ class Admin::UsersController < ApplicationController
     else
       render :edit
     end
-    debugger
+    #debugger
   end
 
   def destroy
@@ -91,5 +92,9 @@ class Admin::UsersController < ApplicationController
     else
       false
     end
+  end
+
+  def set_role
+    session[:role] = session[:checkbox]
   end
 end
