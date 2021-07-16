@@ -34,6 +34,10 @@
       </div>
     <% elsif current_user.admin %>
       <div class="form-group">
+        <%= f.label :admin, "Is admin" %>
+        <%= f.check_box :admin %>
+      </div>
+      <div class="form-group">
         <%= f.label :current_password, raw(t('user_relate.role_admin_password')) %>
         <%= f.password_field :current_password, class: "form-control" %>
       </div>

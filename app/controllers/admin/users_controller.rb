@@ -37,7 +37,7 @@ class Admin::UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success] = I18n.t('user_relate.edit_success')
-      redirect_to :edit_user, :id => @user
+      redirect_to :admin_edit_user, :id => @user
     else
       render :edit
     end
@@ -62,7 +62,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :admin)
   end
 
   def logged_in_user
