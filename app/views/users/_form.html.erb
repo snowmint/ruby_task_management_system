@@ -1,7 +1,7 @@
-<%= form_for(user, locals) do |f| %>
-  <% if locals[:html][:class] == "edit_user" %>
+<%= form_for user, url: locals[:url], method: locals[:method] do |f| %>
+  <% if locals[:url].include?("edit") %>
     <% locals_for_translate = "edit_user"%>
-  <% elsif locals[:html][:class] == "new_user" %>
+  <% elsif locals[:url].include?("create") %>
     <% locals_for_translate = "add_user"%>
   <% end %>
   <div class="form-group">
@@ -14,7 +14,7 @@
     <%= f.text_field :email, class: "form-control" %>
   </div>
 
-  <% if locals[:html][:class] == "edit_user" %>
+  <% if locals[:url].include?("edit") %>
     <% if user.id == current_user.id %>
       <div class="form-group">
         <%= f.label :password, raw(t('user_relate.new_password')) %>

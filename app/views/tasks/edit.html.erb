@@ -5,7 +5,7 @@
   <div style="color:red">
     <%= flash[:error]%>
   </div>
-  <%= render "form", task: @task, locals: { url: edit_task_path } %>
+  <%= render "form", task: @task, locals: { url: task_path(@task), method: :patch, action:"edit" } %>
   <br />
   <%= link_to raw(t('task_relate.back_to_task_list')), root_path %>
 </div>

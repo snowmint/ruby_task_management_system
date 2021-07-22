@@ -51,12 +51,12 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:user_id, :task_name, :content, :start_time, :end_time, :priority, :status)
+    params.require(:task).permit(:user_id, :task_name, :content, :start_time, :end_time, :priority, :status, :label_list)
   end
 
   def query_params
     query_params = params[:query]
-    query_params ? query_params.permit(:keyword, :status, :priority, :user_id) : {}
+    query_params ? query_params.permit(:keyword, :status, :priority, :user_id, :label_keyword) : {}
   end
 
   def task_find_by_id

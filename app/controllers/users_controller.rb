@@ -37,12 +37,6 @@ class UsersController < ApplicationController
     #debugger
   end
 
-  def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = I18n.t('user_relate.delete_success')
-    redirect_to list_user_path
-  end
-
   private
   def authorize_admin
     redirect_to root_path, alert: "Permissions denied" unless

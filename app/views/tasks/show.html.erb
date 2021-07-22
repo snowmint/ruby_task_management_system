@@ -17,6 +17,7 @@
           <th> <%= Task.human_attribute_name("tasks.end_time") %> </th>
           <th> <%= Task.human_attribute_name("tasks.priority") %> </th>
           <th> <%= Task.human_attribute_name("tasks.status") %> </th>
+          <th> <%= Task.human_attribute_name("task_relate.task_label") %> </th>
           <th> <%= Task.human_attribute_name("tasks.create_time") %> </th>
       </tr>
     </thead>
@@ -30,6 +31,7 @@
             <td><%= task.end_time %></td>
             <td><%= $priority_list[task.priority] %></td>
             <td><%= $status_list[task.status] %></td>
+            <td><%= task.label_list %></td>
             <td><%= task.created_at %></td>
         </tr>
       <% end %>

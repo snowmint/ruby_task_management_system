@@ -37,7 +37,7 @@ class Admin::UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success] = I18n.t('user_relate.edit_success')
-      redirect_to :admin_edit_user, :id => @user
+      redirect_to :edit_admin_user, :id => @user
     else
       render :edit
     end
@@ -52,7 +52,7 @@ class Admin::UsersController < ApplicationController
       User.find(params[:id]).destroy
       flash[:success] = I18n.t('user_relate.delete_success')
     end
-    redirect_to admin_list_user_path
+    redirect_to admin_users_path
   end
 
   private

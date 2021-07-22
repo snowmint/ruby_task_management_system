@@ -1,24 +1,24 @@
-<%= form_for(user, locals) do |f| %>
-  <% if locals[:html][:class] == "edit_admin_user" %>
-    <% locals_for_translate = "edit_user"%>
-  <% elsif locals[:html][:class] == "new_admin_user" %>
-    <% locals_for_translate = "add_user"%>
-  <% elsif locals[:html][:class] == "edit_user" %>
-    <% locals_for_translate = "edit_user"%>
-  <% elsif locals[:html][:class] == "new_user" %>
-    <% locals_for_translate = "add_user"%>
+<%= form_for user, url: locals[:url], method: locals[:method] do |f| %>
+  <% if current_user %>
+    <% if locals[:action].include?("create") %>
+      <% locals_action = "add_user" %>
+    <% elsif locals[:action].include?("edit") %>
+      <% locals_action = "edit_user" %>
+    <% end %>
+    User ID:<%= current_user.id %>
+    User Name: <%= current_user.username %>
   <% end %>
   <div class="form-group">
-    <%= f.label :usesrname, Admin::User.human_attribute_name("users.username") %>
+    <%= f.label :usesrname, User.human_attribute_name("users.username") %>
     <%= f.text_field :username, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :email, Admin::User.human_attribute_name("users.email") %>
+    <%= f.label :email, User.human_attribute_name("users.email") %>
     <%= f.text_field :email, class: "form-control" %>
   </div>
 
-  <% if locals[:html][:class] == "edit_user" %>
+  <% if locals_action == "edit_user" %>
     <% if user.id == current_user.id %>
       <div class="form-group">
         <%= f.label :password, raw(t('user_relate.new_password')) %>
@@ -54,7 +54,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.submit raw(t( "user_relate." + locals_for_translate.to_s )), class: "btn btn-primary form-control" %>
+    <%= f.submit raw(t( "user_relate." + locals_action.to_s )), class: "btn btn-primary form-control" %>
   </div>
 <% end %>
 

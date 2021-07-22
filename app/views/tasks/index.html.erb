@@ -12,6 +12,9 @@
             <%= form.text_field :keyword, placeholder: raw(t('task_relate.enter_keyword')), value: params.dig('query', 'keyword'), class: "form-control" %>
           </div>
           <div class="field form-group" style="display:inline-block;">
+            <%= form.text_field :label_keyword, placeholder: raw(t('task_relate.enter_label_keyword')), value: params.dig('query', 'label_keyword'), class: "form-control" %>
+          </div>
+          <div class="field form-group" style="display:inline-block;">
             <%= form.select :priority, options_for_select([[Task.human_attribute_name("tasks.priority"), nil], ['Urgent', 0], ['Highest', 1], ['High', 2], ['Normal', 3], ['Low', 4], ['Lowest', 5]]), {}, class: "form-control", selected: params.dig('query', 'status'), id: "task_priority" %>
           </div>
           <div class="field form-group" style="display:inline-block;">
@@ -94,6 +97,7 @@
               <th> <%= Task.human_attribute_name("tasks.priority") %> </th>
               <th> <%= Task.human_attribute_name("tasks.status") %> </th>
               <th> <%= Task.human_attribute_name("tasks.create_time") %> </th>
+              <th> <%= raw(t("task_relate.task_label")) %> </th>
               <th> <%= Task.human_attribute_name("tasks.handle") %> </th>
             </tr>
           </thead>
@@ -108,9 +112,10 @@
               <td><%= $priority_list[task.priority] %></td>
               <td><%= $status_list[task.status] %></td>
               <td><%= task.created_at %></td>
+              <td><%= task.label_list %>
               <td>
                 <%= link_to raw(t('task_relate.edit_task')), edit_task_path(task) %>
-                <%= link_to raw(t('task_relate.delete_task')), edit_task_path(task), method: "delete", data: { confirm: "Comfirm to delete it" } %>
+                <%= link_to raw(t('task_relate.delete_task')), task_path(task), method: :delete, data: { confirm: "Comfirm to delete it" } %>
               </td>
             </tr>
             <% end %>

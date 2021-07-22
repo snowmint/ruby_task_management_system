@@ -2,45 +2,15 @@ Rails.application.routes.draw do
 
   namespace :admin, path: 'implicit' do
     get 'sessions/new'
-    # resources :tasks
-    root 'tasks#index'
-    get 'tasks/new'
-    post '/tasks/new' => 'tasks#create', as: 'new_task'
-    get 'tasks/:id/edit' => 'tasks#edit', as: 'edit_task'
-    patch '/tasks/:id/edit' => 'tasks#update'
-    delete '/tasks/:id/edit' => 'tasks#destroy'
-    get 'tasks/home' => 'tasks#home', as: 'home_task'
-    get 'tasks/:id/show' => 'tasks#show', as: 'show_task'
-    #resources :users
-    get 'users/new'
-    get 'users/index' => 'users#index', as: 'list_user'
-    post '/users/new' => 'users#create', as: 'new_user'
-    get 'users/:id/edit' => 'users#edit', as: 'edit_user'
-    patch '/users/:id/edit' => 'users#update'
-    delete '/users/:id/edit' => 'users#destroy'
-
-    get    'login'   => 'sessions#new'
-    post   'login'   => 'sessions#create'
-    delete 'logout'  => 'sessions#destroy'
+    resources :tasks
+    resources :users
   end
 
   get 'sessions/new'
-  # resources :tasks
-  root 'tasks#index'
-  get 'tasks/new'
-  post '/tasks/new' => 'tasks#create', as: 'new_task'
-  get 'tasks/:id/edit' => 'tasks#edit', as: 'edit_task'
-  patch '/tasks/:id/edit' => 'tasks#update'
-  delete '/tasks/:id/edit' => 'tasks#destroy'
   get 'tasks/home' => 'tasks#home', as: 'home_task'
-  get 'tasks/:id/show' => 'tasks#show', as: 'show_task'
-  #resources :users
-  get 'users/new'
-  get 'users/index' => 'users#index', as: 'list_user'
-  post '/users/new' => 'users#create', as: 'new_user'
-  get 'users/:id/edit' => 'users#edit', as: 'edit_user'
-  patch '/users/:id/edit' => 'users#update'
-  delete '/users/:id/edit' => 'users#destroy'
+  root 'tasks#index'
+  resources :tasks
+  resources :users
 
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'

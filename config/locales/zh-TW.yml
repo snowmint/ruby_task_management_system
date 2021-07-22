@@ -41,6 +41,7 @@
     delete_task: "刪除任務"
     back_to_task_list: "回到任務列表"
     enter_keyword: "輸入關鍵字"
+    enter_label_keyword: "輸入任務標籤"
     serch_task: "搜尋"
     add_success: "成功新增任務！"
     add_fails: "新增任務失敗..."
@@ -48,6 +49,7 @@
     edit_fails: "編輯任務失敗..."
     delete_success: "成功刪除任務！"
     delete_fails: "刪除任務失敗..."
+    task_label: "任務標籤"
   user_relate:
     password_comfirmation: "確認密碼"
     new_password: "新密碼"

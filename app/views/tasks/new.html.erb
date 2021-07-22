@@ -6,7 +6,7 @@
     <%= flash[:error]%>
   </div>
 
-  <%= render "form", task: @task, locals: { url: new_task_path } %>
+  <%= render "form", task: @task, locals: { url: tasks_path("create"), method: :post, action: "create" } %>
 
   <br />
   <%= link_to raw(t('task_relate.back_to_task_list')), root_path %>

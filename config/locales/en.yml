@@ -72,6 +72,7 @@ en:
     delete_task: "Delete"
     back_to_task_list: "Back to task list"
     enter_keyword: "Enter keyword"
+    enter_label_keyword: "Enter label"
     serch_task: "Search"
     add_success: "Add task successfully!"
     add_fails: "Failed to add task..."
@@ -79,6 +80,7 @@ en:
     edit_fails: "Failed to edit task..."
     delete_success: "Delete task successfully!"
     delete_fails: "Failed to delete task...."
+    task_label: "Label of task"
   user_relate:
     password_comfirmation: "Password Comfirmation"
     new_password: "New Password"
