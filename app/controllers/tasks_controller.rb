@@ -3,7 +3,8 @@ class TasksController < ApplicationController
 
   def index
     @tasks = current_scope.filtered(query_params).page(params[:page]).per(5).order(sort_column + " " + sort_direction)
-    #debugger
+    @status_list = ["Pending", "In Progress", "Complete"]
+    @priority_list = ["Urgent", "Highest", "High", "Normal", "Low", "Lowest"]
   end
 
   def new
@@ -23,6 +24,8 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @status_list = ["Pending", "In Progress", "Complete"]
+    @priority_list = ["Urgent", "Highest", "High", "Normal", "Low", "Lowest"]
   end
 
   def show

@@ -3,6 +3,8 @@ class Admin::TasksController < Admin::BaseController
 
   def index
     @tasks = Task.where(user_id: params[:user_id]).page(params[:page]).per(5)
+    @status_list = ["Pending", "In Progress", "Complete"]
+    @priority_list = ["Urgent", "Highest", "High", "Normal", "Low", "Lowest"]
   end
 
 end

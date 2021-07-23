@@ -81,10 +81,6 @@
           </li>
         </ul>
       </div>
-      <%
-        $status_list = ["Pending", "In Progress", "Complete"]
-        $priority_list = ["Urgent", "Highest", "High", "Normal", "Low", "Lowest"]
-      %>
       <div class="table-responsive">
         <table class="table table-striped table-hover">
           <thead>
@@ -109,8 +105,8 @@
               <td><%= task.content %></td>
               <td><%= task.start_time %></td>
               <td><%= task.end_time %></td>
-              <td><%= $priority_list[task.priority] %></td>
-              <td><%= $status_list[task.status] %></td>
+              <td><%= @priority_list[task.priority] %></td>
+              <td><%= @status_list[task.status] %></td>
               <td><%= task.created_at %></td>
               <td><%= task.label_list %>
               <td>
