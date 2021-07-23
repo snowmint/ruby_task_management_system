@@ -1,11 +1,11 @@
 <div class="container">
   <br/>
-  <h1><%= I18n.t('task_relate.edit_task') %></h1>
+  <h1><%= t('task_relate.edit_task') %></h1>
 
   <div style="color:red">
     <%= flash[:error]%>
   </div>
   <%= render "form", task: @task, locals: { url: task_path(@task), method: :patch, action:"edit" } %>
   <br />
-  <%= link_to I18n.t('task_relate.back_to_task_list'), root_path %>
+  <%= link_to t('task_relate.back_to_task_list'), root_path %>
 </div>
