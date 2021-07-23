@@ -33,7 +33,7 @@
           <td><%= user.tasks.count %></td>
           <% if current_user.admin? %> <!--&& !current_user?(user)-->
             <td>
-              <%= link_to raw(t('task_relate.task_list')), task_path(user) %>
+              <%= link_to raw(t('task_relate.task_list')), admin_user_tasks_path(user) %>
               <%= link_to raw(t('user_relate.edit_user')), edit_admin_user_path(user) %>
               <%= link_to raw(t('user_relate.delete_user')), admin_user_path(user), method: :delete, data: { confirm: "Comfirm to delete acoount: " + user.username } %>
             </td>

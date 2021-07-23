@@ -2,8 +2,10 @@ Rails.application.routes.draw do
 
   namespace :admin, path: 'implicit' do
     get 'sessions/new'
-    resources :tasks
-    resources :users
+    
+    resources :users do
+      resources :tasks
+    end
   end
 
   get 'sessions/new'
