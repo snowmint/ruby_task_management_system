@@ -1,7 +1,7 @@
 <div class="container">
   <% provide(:title, 'tasks') %>
   <br />
-  <h1><%= User.find(params[:user_id]).username %> <%= raw(t('task_relate.task_list')) %></h1>
+  <h1><%= User.find(params[:user_id]).username %> <%= I18n.t('task_relate.task_list') %></h1>
   <%
     $status_list = ["Pending", "In Progress", "Complete"]
     $priority_list = ["Urgent", "Highest", "High", "Normal", "Low", "Lowest"]

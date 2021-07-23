@@ -21,15 +21,15 @@
   <% if locals_action == "edit_user" %>
     <% if user.id == current_user.id %>
       <div class="form-group">
-        <%= f.label :password, raw(t('user_relate.new_password')) %>
+        <%= f.label :password, I18n.t('user_relate.new_password') %>
         <%= f.password_field :password, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :password_confirmation, raw(t('user_relate.new_password_comfirmation')) %>
+        <%= f.label :password_confirmation, I18n.t('user_relate.new_password_comfirmation') %>
         <%= f.password_field :password_confirmation, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :current_password, raw(t('user_relate.current_password')) %>
+        <%= f.label :current_password, I18n.t('user_relate.current_password') %>
         <%= f.password_field :current_password, class: "form-control" %>
       </div>
     <% elsif current_user.admin %>
@@ -38,7 +38,7 @@
         <%= f.check_box :admin %>
       </div>
       <div class="form-group">
-        <%= f.label :current_password, raw(t('user_relate.role_admin_password')) %>
+        <%= f.label :current_password, I18n.t('user_relate.role_admin_password') %>
         <%= f.password_field :current_password, class: "form-control" %>
       </div>
     <% end %>
@@ -48,13 +48,13 @@
       <%= f.password_field :password, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :password_confirmation, raw(t('user_relate.password_comfirmation')) %>
+      <%= f.label :password_confirmation, I18n.t('user_relate.password_comfirmation') %>
       <%= f.password_field :password_confirmation, class: "form-control" %>
     </div>
   <% end %>
 
   <div class="form-group">
-    <%= f.submit raw(t( "user_relate." + locals_action.to_s )), class: "btn btn-primary form-control" %>
+    <%= f.submit I18n.t( "user_relate." + locals_action.to_s ), class: "btn btn-primary form-control" %>
   </div>
 <% end %>
 
