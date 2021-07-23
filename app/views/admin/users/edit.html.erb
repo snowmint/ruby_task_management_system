@@ -1,19 +1,20 @@
 <div class="container">
   <br/>
   <% provide(:title, 'Edit Account') %>
+
   <div style="color:green">
-    <%= flash[:success]%>
+  <%= flash[:success]%>
   </div>
 
   <div style="color:red">
-    <%= flash[:error]%>
+      <%= flash[:error]%>
   </div>
   <div>
     <h1><%= t('user_relate.edit_user') %></h1>
       <br />
       <div class="row", style="margin: auto;">
         <div class="col-md-6 col-md-offset-3">
-          <%= render "form", user: @user, locals: { url: user_path(user), method: :patch } %>
+          <%= render "form", user: @user, locals: { url: admin_user_path(@user), method: :patch, action: "edit" } %>
         </div>
       </div>
     </div>

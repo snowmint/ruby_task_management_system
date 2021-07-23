@@ -4,7 +4,7 @@
 <div class="container">
     <br/>
     <% provide(:title, "Log in") %>
-    <h1><%= raw(t('user_relate.login_user')) %></h1>
+    <h1><%= t('user_relate.login_user') %></h1>
 
     <div style="color:green">
         <%= flash.now[:success]%>
@@ -25,10 +25,10 @@
         <%= f.password_field :password, class: 'form-control' %>
         <br/>
 
-        <%= f.submit raw(t('user_relate.login_user')), class: "btn btn-primary" %>
+        <%= f.submit t('user_relate.login_user'), class: "btn btn-primary" %>
         <% end %>
 
-        <p> <%= raw(t('user_relate.new_user_question')) %> <%= link_to raw(t('user_relate.signup_now')), new_user_path %></p>
+        <p> <%= t('user_relate.new_user_question') %> <%= link_to t('user_relate.signup_now'), new_user_path %></p>
     </div>
     </div>
 </div>

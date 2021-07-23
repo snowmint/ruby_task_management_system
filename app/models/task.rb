@@ -1,7 +1,8 @@
 class Task < ApplicationRecord
   #relation
   belongs_to :user
-  has_many :label_map
+  has_many :label_maps
+  has_many :labels, through: :label_maps
 
   #validates
   validates :user_id, :start_time, :end_time, :task_name, presence: true
@@ -23,7 +24,7 @@ class Task < ApplicationRecord
   end
 
   def self.by_keyword(keyword)
-    keyword.blank? ? all : where("task_name ILIKE :search", search: "%#{keyword}%")
+    keyword.blank? ? all : where("task_name ILIKE :search OR content ILIKE :search", search: "%#{keyword}%")
   end
 
   def self.by_user_id(user_id)
@@ -31,7 +32,7 @@ class Task < ApplicationRecord
   end
 
   def self.filtered(query_params)
-    Task.by_user_id(query_params[:user_id]).by_status(query_params[:status]).by_priority(query_params[:priority]).by_keyword(query_params[:keyword])
+    labeled_with(query_params[:label_keyword]).by_user_id(query_params[:user_id]).by_status(query_params[:status]).by_priority(query_params[:priority]).by_keyword(query_params[:keyword])
   end
 
   #method
@@ -41,6 +42,20 @@ class Task < ApplicationRecord
     end
     if ( task_name.blank? && content.present? )
       errors.add(:task_name, I18n.t('errors.content_without_task_name'))
+    end
+  end
+
+  def self.labeled_with(label_keyword)
+    label_keyword.blank? ? all : Label.find_by!(label_name: label_keyword).tasks
+  end
+
+  def label_list
+    labels.map(&:label_name).join(', ')
+  end
+
+  def label_list=(names)
+    self.labels = names.split(',').map do |item|
+      Label.where(label_name: item.strip).first_or_create!
     end
   end
 end

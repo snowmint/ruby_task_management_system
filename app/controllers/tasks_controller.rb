@@ -1,9 +1,9 @@
 class TasksController < ApplicationController
   before_action :task_find_by_id, only:[:edit, :update, :destroy]
+  before_action :instance_var,    only: [:index, edit]
 
   def index
     @tasks = current_scope.filtered(query_params).page(params[:page]).per(5).order(sort_column + " " + sort_direction)
-    #debugger
   end
 
   def new
@@ -46,21 +46,27 @@ class TasksController < ApplicationController
 
   private
 
-    def current_scope
-      current_user ? current_user.tasks : Task
-    end
+  def current_scope
+    current_user ? current_user.tasks : Task
+  end
 
-    def task_params
-      params.require(:task).permit(:user_id, :task_name, :content, :start_time, :end_time, :priority, :status)
-    end
+  def task_params
+    params.require(:task).permit(:user_id, :task_name, :content, :start_time, :end_time, :priority, :status, :label_list)
+  end
 
-    def query_params
-      query_params = params[:query]
-      query_params ? query_params.permit(:keyword, :status, :priority, :user_id) : {}
-    end
+  def query_params
+    query_params = params[:query]
+    query_params ? query_params.permit(:keyword, :status, :priority, :user_id, :label_keyword) : {}
+  end
 
-    def task_find_by_id
-      @task = current_scope.find(params['id'])
-    end
+  def task_find_by_id
+    @task = current_scope.find(params['id'])
+  end
+
+  def instance_var
+    @status_list = ["Pending", "In Progress", "Complete"]
+    @priority_list = ["Urgent", "Highest", "High", "Normal", "Low", "Lowest"]
+  end
+
 end
   

@@ -1,8 +1,12 @@
 <%= form_for user, url: locals[:url], method: locals[:method] do |f| %>
-  <% if locals[:url].include?("edit") %>
-    <% locals_for_translate = "edit_user"%>
-  <% elsif locals[:url].include?("create") %>
-    <% locals_for_translate = "add_user"%>
+  <% if current_user %>
+    <% if locals[:action].include?("create") %>
+      <% locals_action = "add_user" %>
+    <% elsif locals[:action].include?("edit") %>
+      <% locals_action = "edit_user" %>
+    <% end %>
+    User ID:<%= current_user.id %>
+    User Name: <%= current_user.username %>
   <% end %>
   <div class="form-group">
     <%= f.label :usesrname, User.human_attribute_name("users.username") %>
@@ -14,7 +18,7 @@
     <%= f.text_field :email, class: "form-control" %>
   </div>
 
-  <% if locals[:url].include?("edit") %>
+  <% if locals_action == "edit_user" %>
     <% if user.id == current_user.id %>
       <div class="form-group">
         <%= f.label :password, t('user_relate.new_password') %>
@@ -29,6 +33,10 @@
         <%= f.password_field :current_password, class: "form-control" %>
       </div>
     <% elsif current_user.admin %>
+      <div class="form-group">
+        <%= f.label :admin, "Is admin" %>
+        <%= f.check_box :admin %>
+      </div>
       <div class="form-group">
         <%= f.label :current_password, t('user_relate.role_admin_password') %>
         <%= f.password_field :current_password, class: "form-control" %>
@@ -46,7 +54,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.submit t('user_relate.' + locals_for_translate), class: "btn btn-primary form-control" %>
+    <%= f.submit t( "user_relate." + locals_action.to_s ), class: "btn btn-primary form-control" %>
   </div>
 <% end %>
 

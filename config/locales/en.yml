@@ -40,6 +40,9 @@ en:
     username_blank: "Username can't be blank"
     username_uniqueness: "Error: Duplicate Username"
 
+    email_blank: "Email can't be blank"
+    email_uniqueness: "Error: Duplicate Email Address"
+
     password_blank: "Password can't be blank"
     password_no_lowercase: "Password must contain at least one lowercase letter"
     password_no_uppercase: "Password must contain at least one uppercase letter" 
@@ -69,6 +72,7 @@ en:
     delete_task: "Delete"
     back_to_task_list: "Back to task list"
     enter_keyword: "Enter keyword"
+    enter_label_keyword: "Enter label"
     serch_task: "Search"
     add_success: "Add task successfully!"
     add_fails: "Failed to add task..."
@@ -76,8 +80,12 @@ en:
     edit_fails: "Failed to edit task..."
     delete_success: "Delete task successfully!"
     delete_fails: "Failed to delete task...."
+    task_label: "Label of task"
   user_relate:
     password_comfirmation: "Password Comfirmation"
+    new_password: "New Password"
+    new_password_comfirmation: "New Password Comfirmation"
+    current_password: "Current Password"
     user_list: "Account list"
     add_user: "Create Account"
     edit_user: "Edit Account"
@@ -99,8 +107,10 @@ en:
     user_profile: "Profile"
     user_setting: "Setting"
     role_admin: "Administrator"
+    role_admin_password: "Administrator password"
     role_member: "Member"
     num_of_tasks: "Number of task"
+    at_least_one_admin: "Failed, at least one admin required"
   activerecord:
     attributes:
       tasks:
@@ -118,8 +128,10 @@ en:
         label_name: "Label name"
         num_of_use: "Number of use"
       users:
+        id: "User ID"
         username: "Username"
         password: "Password"
+        email: "Email Address"
         admin: "Admin Permission"
         create_time: "Create time"
         update_time: "Update time"

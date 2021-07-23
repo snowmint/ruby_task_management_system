@@ -1,13 +1,13 @@
 <div class="container">
   <br/>
-  <h1><%= raw(t('task_relate.add_task')) %></h1>
+  <h1><%= t('task_relate.add_task') %></h1>
 
   <div style="color:red">
     <%= flash[:error]%>
   </div>
 
-  <%= render "form", task: @task, locals: { url: new_task_path } %>
+  <%= render "form", task: @task, locals: { url: tasks_path("create"), method: :post, action: "create" } %>
 
   <br />
-  <%= link_to raw(t('task_relate.back_to_task_list')), root_path %>
+  <%= link_to t('task_relate.back_to_task_list'), root_path %>
 </div>

@@ -38,6 +38,8 @@ gem 'rails-i18n'
 #kaminari
 gem 'kaminari'
 
+gem 'factory_bot'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -53,14 +55,19 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'faker'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers', '~> 4.0'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'fabrication'
+  gem "factory_bot_rails"
+  gem 'database_rewinder'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
