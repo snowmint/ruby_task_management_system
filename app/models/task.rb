@@ -32,7 +32,7 @@ class Task < ApplicationRecord
   end
 
   def self.filtered(query_params)
-    Task.labeled_with(query_params[:label_keyword]).by_user_id(query_params[:user_id]).by_status(query_params[:status]).by_priority(query_params[:priority]).by_keyword(query_params[:keyword])
+    labeled_with(query_params[:label_keyword]).by_user_id(query_params[:user_id]).by_status(query_params[:status]).by_priority(query_params[:priority]).by_keyword(query_params[:keyword])
   end
 
   #method

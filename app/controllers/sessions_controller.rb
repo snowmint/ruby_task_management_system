@@ -10,9 +10,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Logged in successfully."
       log_in user
       redirect_to root_path(session[:user_id])
-      #debugger
     else
-      #debugger
       flash[:error] = I18n.t('user_relate.invalid_login')
       render 'new'
     end
@@ -22,13 +20,6 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     flash[:success] = "You have been logged out."
     redirect_to home_task_path
-  end
-
-  private
-
-  def set
-    session[:checkbox] = role_checkbox[:session_setter]
-    render :nothing => true
   end
 
 end
