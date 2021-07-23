@@ -1,10 +1,9 @@
 class TasksController < ApplicationController
   before_action :task_find_by_id, only:[:edit, :update, :destroy]
+  before_action :instance_var,    only: [:index, edit]
 
   def index
     @tasks = current_scope.filtered(query_params).page(params[:page]).per(5).order(sort_column + " " + sort_direction)
-    @status_list = ["Pending", "In Progress", "Complete"]
-    @priority_list = ["Urgent", "Highest", "High", "Normal", "Low", "Lowest"]
   end
 
   def new
@@ -24,8 +23,6 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @status_list = ["Pending", "In Progress", "Complete"]
-    @priority_list = ["Urgent", "Highest", "High", "Normal", "Low", "Lowest"]
   end
 
   def show
@@ -65,5 +62,11 @@ class TasksController < ApplicationController
   def task_find_by_id
     @task = current_scope.find(params['id'])
   end
+
+  def instance_var
+    @status_list = ["Pending", "In Progress", "Complete"]
+    @priority_list = ["Urgent", "Highest", "High", "Normal", "Low", "Lowest"]
+  end
+
 end
   

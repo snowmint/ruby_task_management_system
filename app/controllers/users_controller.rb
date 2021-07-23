@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_action :user_find_by_id, only:[:edit, :update, :destroy]
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user,   only: [:edit, :update]
-  
+  before_action :logged_in_user,  only: [:index, :edit, :update, :destroy]
+  before_action :correct_user,    only: [:edit, :update]
+
   def index
     flash[:error] = "Permission denied"
     redirect_to root_path
