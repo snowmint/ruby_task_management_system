@@ -4,7 +4,6 @@ class TasksController < ApplicationController
 
   def index
     @tasks = current_scope.filtered(query_params).page(params[:page]).per(5).order(sort_column + " " + sort_direction)
-    debugger
   end
 
   def new
