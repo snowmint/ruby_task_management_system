@@ -1,13 +1,13 @@
 <%= form_for user, url: locals[:url], method: locals[:method] do |f| %>
-  <% if locals[:url].include?("edit") %>
-    <% locals_for_translate = "edit_user"%>
-  <% elsif locals[:url].include?("create") %>
-    <% locals_for_translate = "add_user"%>
-  <% end %>
   <div class="form-group">
     <%= f.label :usesrname, User.human_attribute_name("users.username") %>
     <%= f.text_field :username, class: "form-control" %>
   </div>
+  <% if action_name.include?("new") %>
+    <% locals_action = "add_user" %>
+  <% elsif action_name.include?("edit") %>
+    <% locals_action = "edit_user" %>
+  <% end %>
 
   <div class="form-group">
     <%= f.label :email, User.human_attribute_name("users.email") %>
@@ -46,7 +46,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.submit t('user_relate.' + locals_for_translate), class: "btn btn-primary form-control" %>
+  <%= f.submit t( "user_relate." + locals_action.to_s ), class: "btn btn-primary form-control" %>
   </div>
 <% end %>
 
