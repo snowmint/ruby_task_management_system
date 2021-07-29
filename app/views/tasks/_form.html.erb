@@ -1,8 +1,8 @@
 <%= form_for task, url: locals[:url], method: locals[:method] do |t| %>
   <% if current_user %>
-    <% if locals[:action].include?("create") %>
+    <% if action_name.include?("new") %>
       <% locals_action = "add_task" %>
-    <% elsif locals[:action].include?("edit") %>
+    <% elsif action_name.include?("edit") %>
       <% locals_action = "edit_task" %>
     <% end %>
     User ID:<%= current_user.id %>
@@ -40,7 +40,7 @@
     <%= t.text_field :label_list, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= t.submit t('task_relate.' + locals_action), class: "btn btn-primary form-control" %>
+    <%= t.submit t( "task_relate." + locals_action.to_s ), class: "btn btn-primary form-control" %>
   </div>
 <% end %>
 

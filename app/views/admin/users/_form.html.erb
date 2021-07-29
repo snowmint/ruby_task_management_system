@@ -1,12 +1,13 @@
 <%= form_for user, url: locals[:url], method: locals[:method] do |f| %>
   <% if current_user %>
-    <% if locals[:action].include?("create") %>
+    <% if action_name.include?("new") %>
       <% locals_action = "add_user" %>
-    <% elsif locals[:action].include?("edit") %>
+    <% elsif action_name.include?("edit") %>
       <% locals_action = "edit_user" %>
     <% end %>
     User ID:<%= current_user.id %>
     User Name: <%= current_user.username %>
+    Action name:<%= action_name %>
   <% end %>
   <div class="form-group">
     <%= f.label :usesrname, User.human_attribute_name("users.username") %>
