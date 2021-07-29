@@ -46,7 +46,7 @@ class Task < ApplicationRecord
   end
 
   def self.labeled_with(label_keyword)
-    label_keyword.blank? ? all : Task.joins(:labels).where("labels.label_name = ?", label_keyword)
+    label_keyword.blank? ? all : joins(:labels).where("labels.label_name = ?", label_keyword)
   end
 
   def label_list
